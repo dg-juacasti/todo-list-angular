@@ -36,7 +36,6 @@ export class TodoWrapperComponent implements OnInit {
                     }
                 });
                 this.totalTasks = resp.length;
-                this.percentage = Math.round((this.completedTasks / this.totalTasks) * 100);
             }
 
         });
@@ -49,8 +48,10 @@ export class TodoWrapperComponent implements OnInit {
     onChangeStatus(todo: Todo) {
         if (todo.status === 1) {
             todo.status = 0;
+            this.completedTasks--;
         } else {
             todo.status = 1;
+            this.completedTasks++;
         }
         this.todoService.updateTodo(todo).subscribe();
     }
@@ -85,5 +86,8 @@ export class TodoWrapperComponent implements OnInit {
         } else {
             this.textButton = 'Mostrar no completados';
         }
+    }
+    getPorcentage(){
+        return Math.round((this.completedTasks / this.totalTasks) * 100);
     }
 }
