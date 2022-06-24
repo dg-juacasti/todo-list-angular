@@ -18,6 +18,10 @@
     padding: 16px 0 8px 0;
     color: $textColor2;
   }
+  &__invalid-field {
+    color: $textcolorIvalid;
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 991.98px) {

@@ -8,6 +8,7 @@ import { ResponseTodo } from "./todo-list/interfaces/response";
 import { RouterTestingModule } from '@angular/router/testing'
 import { of } from 'rxjs';
 import { AddTodoComponent } from "./todo-list/components/add-todo/add-todo.component";
+import { Todo } from './todo-list/interfaces/todo';
 
 const todoListResponse: ResponseTodo = {
   success: true,
@@ -17,7 +18,7 @@ const todoListResponse: ResponseTodo = {
       id: 26,
       description: 'Nueva tarea',
       status: 1,
-      id_author: 1,
+      id_author: 31,
       finish_at: '2022-06-24T00:00:00.000Z',
       created_at: '2022-06-14T12:06:38.000Z',
     },
@@ -25,17 +26,29 @@ const todoListResponse: ResponseTodo = {
       id: 28,
       description: 'Nuevo Todo',
       status: 0,
-      id_author: 1,
+      id_author: 31,
       finish_at: '2022-06-16T00:00:00.000Z',
       created_at: '2022-06-14T13:14:08.000Z',
     },
   ],
 };
 
+const todo: Todo = { 
+
+      id: 26,
+      description: 'Nueva tarea',
+      status: 1,
+      id_author: 31,
+      finish_at: '2022-06-24T00:00:00.000Z',
+      created_at: '2022-06-14T12:06:38.000Z',   
+
+};
+
 describe('TodoList App Test', () => {
 
   let todoWrapperComponent: TodoWrapperComponent;
   let fixture: ComponentFixture<TodoWrapperComponent>;
+  
   let todoService: TodoService;
 
   beforeEach(() => {
@@ -77,7 +90,63 @@ describe('TodoList App Test', () => {
   });
 
   it('Should create a new todo', async () => {
+ 
   })
+  /**
+   * test de los metodos dentro del todo wrapper
+   */
+   it('Obener toda la lista getListTodo', async () => {
+    todoWrapperComponent.getListTodo();
+    expect(todoWrapperComponent.getListTodo.length).toBe(0);
+   })
+   it('redireccionar para añadir addTodo', async () => {
+    todoWrapperComponent.addTodo();
+    expect(todoWrapperComponent.addTodo.length).toBe(0);
+   })
+   it('enviar elemantos para actualizar todo list', async () => {
+    todoWrapperComponent.updateList(todo);
+    expect(todoWrapperComponent.updateList.length).toBe(1);
+   })
+   it('enviar elemantos para elimanr todo list', async () => {
+    todoWrapperComponent.eliminarTarea(1);
+    expect(todoWrapperComponent.eliminarTarea.length).toBe(1);
+   })
+  /**
+   * test de los metodos dentro servicio
+   */
+   it('create servicio', () => {
+    expect(todoService).toBeTruthy();
+   });
+
+   it('obtener toda la lista', (done) => {
+    todoService.getTodoList().subscribe(tareas=> {
+      expect(tareas.success).toBe(true);
+    })
+    done();
+   });
+
+   it('crear nueva tarea por servicio', (done) => {
+    todoService.createTodoList(todo).subscribe(tareas=> {
+          expect(tareas.success).toBe(true);
+        })        
+        done();
+   });
+
+   it('actualuzar nueva tarea por servicio', (done) => {
+    todoService.updateTodoList(todo).subscribe(tareas=> {
+          expect(tareas.success).toBe(true);
+        })        
+        done();
+   });
+
+   it('eliminar nueva tarea por servicio', (done) => {
+    todoService.deleteTodoList(100).subscribe(tareas=> {
+          expect(tareas.success).toBe(false);
+        })        
+        done();
+   });
+
+
 
   /**
   *
@@ -113,8 +182,7 @@ describe('TodoList App Test', () => {
    *
    * Probar el filtro de las tareas por descripcion
   */
-  it('Should filter the todo list by description', async () => {
-  })
+ 
 
   /**
    *

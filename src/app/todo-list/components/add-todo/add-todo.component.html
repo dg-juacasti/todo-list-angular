@@ -8,7 +8,9 @@
     <div>
       <app-input [frmTodo]="frmTodo"></app-input>
     </div>
-
+    <div class = "container__invalid-field" *ngIf="form['descriptionTodo'].errors">
+      Descripcion es requerido
+    </div>
     <div class="container__label-space">
       <label for="start">Fecha límite</label>
     </div>
@@ -24,8 +26,16 @@
         formControlName="finishAt"
       />
     </div>
-
+    <div class="container__invalid-field" *ngIf="form['finishAt'].errors">
+      Fecha limite es requerido
+    </div>
     <div class="container__actions">
+      <div>
+        <app-icon-button
+          [textButton]="'Volver'"
+          (actionClick)="onClickReturn()"
+        ></app-icon-button>
+      </div>
       <div>
         <app-icon-button
           [textButton]="'Agregar'"

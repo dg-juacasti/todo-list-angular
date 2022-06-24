@@ -2,6 +2,11 @@
 
 <div class="container__search">
   <div>
+  <!--  <app-input placeholder="Buscar tarea"
+            [(ngModel)] = "nombreTarea"
+            (keyup.enter) ="buscarTarea()"></app-input>-->
+  </div>
+  <div>
     <app-icon-button
       [classNameIcon]="'fa fa-plus'"
       (actionClick)="addTodo()"
@@ -24,9 +29,13 @@
     {{ todo.finish_at | date: "dd/MM/yyyy" }}
   </div>
   <div>
-    <em class="fa fa-pencil icon--color"></em>
+    <em class="fa fa-pencil icon--color" 
+        (click)="updateList(todo)"
+    ></em>
   </div>
   <div>
-    <em class="fa fa-trash-o icon--color"></em>
+    <em class="fa fa-trash-o icon--color"
+        (click)="eliminarTarea(todo.id)">
+    </em>
   </div>
 </div>
