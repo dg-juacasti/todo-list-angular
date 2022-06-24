@@ -71,5 +71,11 @@ export class TodoWrapperComponent implements OnInit {
 
     }
 
+    onDeleteClick(id: number) {
+        this.todoService.deleteTodo(id).subscribe(value => {
+            this.getListTodo();
+        });
+    }
+
 
 }

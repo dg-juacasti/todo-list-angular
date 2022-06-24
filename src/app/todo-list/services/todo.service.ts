@@ -39,15 +39,17 @@ export class TodoService {
         return this.http.put<any>(`${this.ENPOINT}/${updatedTodo.id}`, updatedTodo);
     }
 
+    deleteTodo(id: number): Observable<any> | undefined {
+        return this.http.delete<any>(`${this.ENPOINT}/${id}`);
+    }
+
     getTodoById(id: number): Observable<any> {
         return this.http.get<ResponseTodo>(`${this.ENPOINT}/?id_author=${this.ID_AUTOR}`).pipe(
             map(({data}) => {
-                    console.log(data.findIndex(x => x.id === id));
-                    return data.findIndex(x => x.id === id);
+                    return data[data.findIndex(x => x.id == id)];
                 }
             )
         );
-
     }
 
 }
