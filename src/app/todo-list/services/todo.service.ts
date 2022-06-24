@@ -10,7 +10,7 @@ import { StateService } from './state.service';
 })
 export class TodoService {
 
-  private readonly ID_AUTOR = 1;
+  private readonly ID_AUTOR = 25;
   private readonly ENPOINT = 'https://bp-todolist.herokuapp.com';
 
   constructor(

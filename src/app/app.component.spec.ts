@@ -8,6 +8,7 @@ import { ResponseTodo } from "./todo-list/interfaces/response";
 import { RouterTestingModule } from '@angular/router/testing'
 import { of } from 'rxjs';
 import { AddTodoComponent } from "./todo-list/components/add-todo/add-todo.component";
+import { Validators } from "@angular/forms";
 
 const todoListResponse: ResponseTodo = {
   success: true,
@@ -84,8 +85,21 @@ describe('TodoList App Test', () => {
   * Probar que el formulario muestre los mensajes de requerimiento cuando
   * el formulario no tenga la descripción y la fecha ingresada
  */
-  it('Should validate the todo form, description and date required', async () => {
+
+  
+   test('debe hacer match con el snapshot', () => {
+    const fixture = TestBed.createComponent(TodoWrapperComponent);
+     fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect( compiled ).toMatchSnapshot();
+  });
+
+  
+  test('Should validate the todo form, description and date required', async () => {
+   
+
   })
+
   it('Should update a todo, description and date', async () => {
   })
   it('Should delete a todo', async () => {

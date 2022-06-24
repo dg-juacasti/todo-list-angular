@@ -1,32 +1,67 @@
 <app-header></app-header>
 
-<div class="container__search">
-  <div>
-    <app-icon-button
-      [classNameIcon]="'fa fa-plus'"
-      (actionClick)="addTodo()"
+
+<div class="header">
+  <div class="header__first-column">
+    
+    <input class="input input--primary" id = "search-input" type="text" placeholder="Buscar tarea">
+  </div>
+  <div >
+      <app-icon-button
+        [classNameIcon]="'fa fa-plus'"
+        (actionClick)="addTodo()"
     ></app-icon-button>
+  </div>
+  
+</div>
+
+<div class="item-container">
+  <div class="item-task">
+    <div class="container__list-todo" *ngFor="let todo of listPayments">
+      
+      <div class="item-task__first-column">
+        <input
+        type="checkbox"
+        (change)="onChangeStatus(todo)"
+        [checked]="todo.status === 1"
+        />
+      </div>
+
+      <div class="item-task__second-column"> 
+        <div [ngClass]="{ 'todo-finished': todo.status === 1 }">
+        {{ todo.description }}
+        </div>
+      </div>
+      <div class="item-task__third-column">
+        <div class="txt-date" [ngClass]="{ 'todo-finished': todo.status === 1 }">
+          {{ todo.finish_at | date: "dd/MM/yyyy" }}
+        </div>
+      </div>
+      
+      <div class="item-task__fourth-column">
+    
+        <button class="button button--secondary">
+          <em class="fa fa-pencil icon--color"></em>
+        </button>
+        <button class="button button--secondary">
+          <em class="fa fa-trash-o icon--color"></em>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="container__list-todo" *ngFor="let todo of listPayments">
-  <div>
-    <input
-      type="checkbox"
-      (change)="onChangeStatus(todo)"
-      [checked]="todo.status === 1"
-    />
+
+
+<div class="footer">
+  <div class="footer__first-column">
+    <label class="footer_label">
+     Tareas completadas
+    </label>
   </div>
-  <div [ngClass]="{ 'todo-finished': todo.status === 1 }">
-    {{ todo.description }}
-  </div>
-  <div class="txt-date" [ngClass]="{ 'todo-finished': todo.status === 1 }">
-    {{ todo.finish_at | date: "dd/MM/yyyy" }}
-  </div>
-  <div>
-    <em class="fa fa-pencil icon--color"></em>
-  </div>
-  <div>
-    <em class="fa fa-trash-o icon--color"></em>
+  <div class="footer__second-column">
+    <button class="button button--primary">
+      Mostrar no completados
+  </button>
   </div>
 </div>
