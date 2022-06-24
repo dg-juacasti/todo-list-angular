@@ -6,7 +6,10 @@
       <label>Descripción</label>
     </div>
     <div>
-      <app-input [frmTodo]="frmTodo"></app-input>
+      <input type="text" id="todoDescription" formControlName="description" />
+      <span class="container__error" *ngIf="descriptionErrorMessage">{{
+        descriptionErrorMessage
+      }}</span>
     </div>
 
     <div class="container__label-space">
@@ -15,22 +18,30 @@
     <div>
       <input
         type="date"
-        id="start"
+        id="todoFinishAt"
         name="todo-start"
-        value="2018-07-22"
         min="2022-01-01"
         max="2023-12-31"
-        data-date-format="DD MMMM YYYY"
         formControlName="finishAt"
       />
+      <span class="container__error" *ngIf="dateErrorMessage">{{
+        dateErrorMessage
+      }}</span>
     </div>
 
     <div class="container__actions">
       <div>
         <app-icon-button
-          [textButton]="'Agregar'"
+          [textButton]="'Volver'"
+          (actionClick)="navigateBack()"
+          [typeButton]="'secundary'"
+        ></app-icon-button>
+      </div>
+      <div>
+        <app-icon-button
+          [textButton]="buttonText"
           (actionClick)="onClickAdd()"
-          [disabled]="!frmTodo.valid"
+          [disabled]="isFormInvalid"
         ></app-icon-button>
       </div>
     </div>

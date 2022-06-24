@@ -5,12 +5,14 @@ import { IconButtonComponent } from './components/atoms/icon-button/icon-button.
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/molecules/header/header.component';
+import { ProgressBarComponent } from './components/molecules/progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
     InputComponent,
     IconButtonComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProgressBarComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { HeaderComponent } from './components/molecules/header/header.component'
   exports: [
     InputComponent,
     IconButtonComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProgressBarComponent
   ]
 })
 

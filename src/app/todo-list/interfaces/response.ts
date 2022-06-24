@@ -1,7 +1,5 @@
-import { Todo } from "./todo";
-
 export interface ResponseTodo {
-    success: boolean;
-    type:string;
-    data: Todo[]
+  success: boolean;
+  type: string;
+  data: any;
 }

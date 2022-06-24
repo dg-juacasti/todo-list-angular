@@ -7,17 +7,17 @@ import { Todo } from '../interfaces/todo';
 })
 export class StateService {
 
-  public todoSelect$ = new BehaviorSubject<Todo>(undefined);
-  public todoList$ = new BehaviorSubject<Todo[]>(undefined);
+  public todoSelected$ = new BehaviorSubject<Todo>(undefined);
+  public todoList$ = new BehaviorSubject<Todo[]>([]);
 
   constructor() { }
 
-  get todoSelect() {
-    return this.todoSelect$.getValue();
+  get todoSelected() {
+    return this.todoSelected$.getValue();
   }
 
-  setTodoSelect(value: Todo) {
-    this.todoSelect$.next(value);
+  setTodoSelected(value: Todo) {
+    this.todoSelected$.next(value);
   }
 
   get todoList() {

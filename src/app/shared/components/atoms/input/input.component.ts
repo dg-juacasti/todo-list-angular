@@ -1,25 +1,19 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Input, OnInit } from "@angular/core";
+import { FormControl, NgControl } from "@angular/forms";
 
 @Component({
-  selector: 'app-input',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  selector: "app-input",
+  templateUrl: "./input.component.html",
+  styleUrls: ["./input.component.scss"],
 })
 export class InputComponent implements OnInit {
+  @Input() placeholder = "";
 
-  @Input() placeholder = '';
-  @Input() frmTodo: FormGroup;
-  @Output() onKeyUpEvent = new EventEmitter<any>();
+  constructor(private readonly _control: NgControl) {}
 
+  ngOnInit(): void {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  get formControl(): FormControl {
+    return this._control.control as FormControl;
   }
-
-  onKeyUp(event) {
-    this.onKeyUpEvent.emit(event);
-  }
-
 }

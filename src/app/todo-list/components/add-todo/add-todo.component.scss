@@ -2,6 +2,7 @@
 
 .container {
   &__form {
+    background-color: white;
     display: grid;
     grid-template-columns: repeat(1fr);
     grid-gap: 8px;
@@ -17,6 +18,12 @@
   &__label-space {
     padding: 16px 0 8px 0;
     color: $textColor2;
+  }
+
+  &__error {
+    color: red;
+    font-size: 12px;
+    font-weight: 14px;
   }
 }
 

@@ -6,5 +6,5 @@
   (click)="onClickButton()"
   [disabled]="disabled"
 >
-  <em [ngClass]="classNameIcon"></em> {{ textButton }}
+  {{ textButton }} <em [ngClass]="classNameIcon" *ngIf="classNameIcon"></em>
 </button>
