@@ -25,14 +25,25 @@
       />
     </div>
 
-    <div class="container__actions">
+    <div  *ngIf="!todoUpdate" class="container__actions">
       <div>
         <app-icon-button
           [textButton]="'Agregar'"
-          (actionClick)="onClickAdd()"
+          (actionClick)="addTodo()"
           [disabled]="!frmTodo.valid"
         ></app-icon-button>
       </div>
     </div>
+
+    <div  *ngIf="todoUpdate" class="container__actions">
+      <div>
+        <app-icon-button
+          [textButton]="'Actualizar'"
+          (actionClick)="updateTodo()"
+          [disabled]="!frmTodo.valid"
+        ></app-icon-button>
+      </div>
+    </div>
+
   </div>
 </form>

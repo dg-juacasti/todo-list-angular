@@ -14,7 +14,8 @@ import { TodoWrapperComponent } from './todo-list/components/todo-wrapper/todo-w
 
 const appRoutes: Routes = [
   { path: '', component: TodoWrapperComponent },
-  { path: 'todo', component: AddTodoComponent }
+  { path: 'todo', component: AddTodoComponent },
+  { path: 'todo/:id', component: AddTodoComponent }
 ];
 
 @NgModule({

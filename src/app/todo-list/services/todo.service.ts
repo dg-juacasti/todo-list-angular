@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { ResponseTodo } from '../interfaces/response';
 import { tap } from 'rxjs/operators';
 import { StateService } from './state.service';
+import { Todo } from '../interfaces/todo';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
-  private readonly ID_AUTOR = 1;
+  private readonly ID_AUTOR = 6;
   private readonly ENPOINT = 'https://bp-todolist.herokuapp.com';
 
   constructor(
@@ -27,5 +28,19 @@ export class TodoService {
       )
     );
   }
+
+  addTodo(todo:Todo){
+    return this.http.post<Todo>(`${this.ENPOINT}/?id_author=${this.ID_AUTOR}`, todo);
+  }
+
+  updateTodo(todo:Todo){
+    return this.http.put<Todo>(`${this.ENPOINT}/${todo.id}`, todo);
+  }
+
+  deleteTodo(id:Number){
+    return this.http.delete(`${this.ENPOINT}/${id}`)
+  }
+
+  
 
 }

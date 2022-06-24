@@ -44,7 +44,8 @@ describe('TodoList App Test', () => {
         HttpClientTestingModule,
         RouterTestingModule.withRoutes([
           { path: '', component: TodoWrapperComponent },
-          { path: 'todo', component: AddTodoComponent }
+          { path: 'todo', component: AddTodoComponent },
+          { path: 'todo/:id', component: AddTodoComponent }
         ]),
       ],
       declarations: [
@@ -77,6 +78,7 @@ describe('TodoList App Test', () => {
   });
 
   it('Should create a new todo', async () => {
+    
   })
 
   /**
@@ -97,8 +99,19 @@ describe('TodoList App Test', () => {
   * el formulario no tenga la descripción y la fecha ingresada
  */
   it('Should update the todo status ', async () => {
+    let initialStatus = 0;
+    todoWrapperComponent.onChangeStatus(todoListResponse.data[0]);
+    initialStatus = todoListResponse.data[0].status;
+    expect(initialStatus).toEqual(1);
   })
+
+
   it('Should show an message when  the todo list is empty  ', async () => {
+    let message = "";
+    if(todoWrapperComponent.listPaymentsAux.length==0){
+      message= "No tienes tareas registradas";
+      expect(message).toEqual("No tienes tareas registradas")
+    }
   })
 
   /**
@@ -122,6 +135,8 @@ describe('TodoList App Test', () => {
    * sobre el boton del filtro se muestren todos la lista nuevamente
   */
   it('Should filter the todo list by completed status and toggle functionality button', async () => {
+    
+    
   })
 
 });
