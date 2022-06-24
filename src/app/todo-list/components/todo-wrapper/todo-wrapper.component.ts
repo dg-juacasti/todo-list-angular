@@ -12,6 +12,7 @@ import { StateService } from '../../services/state.service';
 export class TodoWrapperComponent implements OnInit {
 
   listPayments: Todo[] = [];
+  searchText = '';
 
   constructor(
     private readonly todoService: TodoService,

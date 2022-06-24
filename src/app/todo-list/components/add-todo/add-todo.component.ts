@@ -46,8 +46,6 @@ export class AddTodoComponent implements OnInit {
         this.todo.finish_at = this.frmTodo.value.finishAt;
         this.todo.id_author = 16;
 
-        console.log(this.todoURLParam);
-
         if (this.todoURLParam === 'todo') {
             this.todoService.postNewTodo(this.todo).subscribe(
                 (data) => {
@@ -56,7 +54,7 @@ export class AddTodoComponent implements OnInit {
                         this.router.navigate(['/']);
                     } else {
                         alert('Error al crear registro');
-                        console.log(data);
+                        console.error(data);
                     }
                 },
                 (error) => {
