@@ -1,7 +1,13 @@
 <app-header></app-header>
 
 <div class="container__search">
-  <div>
+  <div class="w-100" style="display: flex; gap: 20px;">
+    <input
+            id="searchTask"
+            name="searchTask"
+            placeholder="Buscar Tarea"
+            [(ngModel)]="searchTask"
+    />
     <app-icon-button
       [classNameIcon]="'fa fa-plus'"
       (actionClick)="addTodo()"
@@ -9,7 +15,7 @@
   </div>
 </div>
 
-<div class="container__list-todo" *ngFor="let todo of listPayments">
+<div class="container__list-todo" *ngFor="let todo of listPayments | filterTask : searchTask">
   <div>
     <input
       type="checkbox"
@@ -17,7 +23,7 @@
       [checked]="todo.status === 1"
     />
   </div>
-  <div [ngClass]="{ 'todo-finished': todo.status === 1 }">
+  <div [ngClass]="{ 'todo-finished': todo.status === 1 }" >
     {{ todo.description }}
   </div>
   <div class="txt-date" [ngClass]="{ 'todo-finished': todo.status === 1 }">
@@ -28,5 +34,18 @@
   </div>
   <div>
     <em class="fa fa-trash-o icon--color"></em>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class=" w-100">
+  </div>
+  <div class="w-100">
+    <app-icon-button
+            [textButton]= textBottom
+            (actionClick)="showUncompleted()"
+            [classNameIcon]="'fa fa-newspaper'"
+            fullWidth="w-100"
+    ></app-icon-button>
   </div>
 </div>

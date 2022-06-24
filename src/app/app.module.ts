@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
 import { TodoWrapperComponent } from './todo-list/components/todo-wrapper/todo-wrapper.component';
+import {FilterTaskPipe} from './pipe/filter-task-pipe';
 
 
 const appRoutes: Routes = [
@@ -17,11 +18,16 @@ const appRoutes: Routes = [
   { path: 'todo', component: AddTodoComponent }
 ];
 
+const pipes = [
+  FilterTaskPipe,
+];
+
 @NgModule({
   declarations: [
     AppComponent,
     AddTodoComponent,
-    TodoWrapperComponent
+    TodoWrapperComponent,
+    ...pipes
   ],
   imports: [
     BrowserModule,

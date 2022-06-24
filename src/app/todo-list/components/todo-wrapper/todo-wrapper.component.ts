@@ -13,6 +13,12 @@ export class TodoWrapperComponent implements OnInit {
 
   listPayments: Todo[] = [];
 
+  searchTask = '';
+  checkTask = 0;
+
+  textBottom = 'Mostrar no completados';
+
+
   constructor(
     private readonly todoService: TodoService,
     private readonly state: StateService,
@@ -28,10 +34,40 @@ export class TodoWrapperComponent implements OnInit {
   }
 
   onChangeStatus(todo: Todo) {
+    if (todo.status === 0){
+      const data = {
+        description: todo.description,
+        status: 1,
+        id_author: todo.id_author,
+        finish_at: todo.finish_at
+      };
+      this.todoService.updateTodoList(todo.id, data).subscribe();
+      this.getListTodo();
+    }
+    else {
+      const data = {
+        description: todo.description,
+        status: 0,
+        id_author: todo.id_author,
+        finish_at: todo.finish_at
+      };
+      this.todoService.updateTodoList(todo.id, data).subscribe();
+      this.getListTodo();
+    }
   }
 
   addTodo() {
     this.router.navigate(['/todo']);
+  }
+
+  showUncompleted() {
+    if (this.textBottom === 'Mostrar no completados'){
+      this.textBottom = 'Mostrar Todos';
+    }
+    else{
+        this.textBottom = 'Mostrar no completados';
+    }
+
   }
 
 }

@@ -28,4 +28,9 @@ export class TodoService {
     );
   }
 
+  updateTodoList(id: number, data: any): Observable<any> | undefined {
+    return this.http.put<any>(`${this.ENPOINT}/${id}`, data);
+  }
+
+
 }

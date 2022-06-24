@@ -12,6 +12,7 @@ export class IconButtonComponent implements OnInit {
   @Input() disabled?: boolean;
   @Input() typeButton: string = 'primary' || 'secundary';
   @Output() actionClick = new EventEmitter<any>();
+  @Input() fullWidth = 'w-100';
 
   constructor() { }
 
