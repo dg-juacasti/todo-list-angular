@@ -44,7 +44,7 @@ export class AddTodoComponent implements OnInit {
         this.todo.description = this.frmTodo.value.descriptionTodo;
         this.todo.status = 0;
         this.todo.finish_at = this.frmTodo.value.finishAt;
-        this.todo.id_author = 6;
+        this.todo.id_author = 16;
 
         console.log(this.todoURLParam);
 
