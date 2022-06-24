@@ -39,4 +39,9 @@ export class TodoService {
     }
 
 
+    public updateTodo(todo: Todo): Observable<ResponseTodo> {
+        const body = JSON.stringify(todo);
+        return this.http.put<ResponseTodo>(`${this.ENPOINT}/${todo.id}`, body, this.httpOptions);
+    }
+
 }
