@@ -24,6 +24,27 @@
     padding: 8px 0 16px;
   }
 }
+.flex_col{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+.icon{
+  width: 2.5rem;
+    height: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.text-center{
+  text-align: center;
+}
+.texto-info{
+  font-size: 1.5rem;
+  line-height: 2rem;
+  --tw-text-opacity: 1;
+  color: rgba(96, 165, 250, var(--tw-text-opacity));
+  color: #1e6395;
+}
 
 .todo-finished {
   text-decoration: line-through;
