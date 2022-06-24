@@ -2,6 +2,6 @@ import { Todo } from "./todo";
 
 export interface ResponseTodo {
     success: boolean;
-    type:string;
+    type: string;
     data: Todo[]
 }

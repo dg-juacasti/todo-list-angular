@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TodoWrapperComponent } from "./todo-list/components/todo-wrapper/todo-wrapper.component";
 import { TodoService } from "./todo-list/services/todo.service";
 import { StateService } from "./todo-list/services/state.service";
@@ -38,8 +38,8 @@ describe('TodoList App Test', () => {
   let fixture: ComponentFixture<TodoWrapperComponent>;
   let todoService: TodoService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
         RouterTestingModule.withRoutes([

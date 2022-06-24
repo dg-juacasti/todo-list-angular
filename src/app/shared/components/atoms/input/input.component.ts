@@ -12,6 +12,8 @@ export class InputComponent implements OnInit {
   @Input() frmTodo: FormGroup;
   @Output() onKeyUpEvent = new EventEmitter<any>();
 
+  searchText: string = '';
+  @Output() emitSearchText: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
@@ -20,6 +22,10 @@ export class InputComponent implements OnInit {
 
   onKeyUp(event) {
     this.onKeyUpEvent.emit(event);
+  }
+
+  searchCharacter(searchTxt: string) {
+    this.emitSearchText.emit(searchTxt);
   }
 
 }

@@ -4,6 +4,7 @@
   &__header {
     text-align: center;
   }
+
   &__list-todo {
     display: grid;
     grid-template-columns: 8% auto 30% 8% 8%;
@@ -11,18 +12,57 @@
     padding: 14px 12px;
     color: #1e6395;
   }
+
   &__list-todo:nth-child(even) {
     background: #edf8fe;
   }
+
   &__list-todo:nth-child(odd) {
     background: #f5f9f9;
   }
+
   &__search {
     display: grid;
     grid-template-columns: 89% 11%;
     grid-gap: 8px;
     padding: 8px 0 16px;
   }
+
+  &__note {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px 0;
+
+    .icon-info {
+      border: 1px solid $textColor;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $textColor;
+      color: $white;
+    }
+
+    .note {
+      font-size: 25px;
+      color: $textColor2;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    app-icon-button {
+      margin: 5px;
+    }
+  }
+ 
 }
 
 .todo-finished {
@@ -31,4 +71,10 @@
 
 .txt-date {
   color: $textColor2;
+}
+
+progress {
+  width: 200px;
+  height: 100px;
+  
 }
