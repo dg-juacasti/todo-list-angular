@@ -28,6 +28,10 @@
     <div class="container__actions">
       <div>
         <app-icon-button
+        [textButton]="'Volver'"
+        (actionClick)="onClickReturn()"
+        ></app-icon-button>
+        <app-icon-button
           [textButton]="'Agregar'"
           (actionClick)="onClickAdd()"
           [disabled]="!frmTodo.valid"

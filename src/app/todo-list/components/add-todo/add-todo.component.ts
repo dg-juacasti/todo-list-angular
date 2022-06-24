@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Todo } from '../../interfaces/todo';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-add-todo',
@@ -11,7 +13,10 @@ export class AddTodoComponent implements OnInit {
   public frmTodo: FormGroup;
 
   constructor(
-    private readonly fb: FormBuilder) {
+    private readonly fb: FormBuilder,
+    private readonly todoService: TodoService,
+    ) {
+      
   }
 
   ngOnInit(): void {
@@ -22,6 +27,13 @@ export class AddTodoComponent implements OnInit {
   }
 
   onClickAdd() {
+   /*  this.todoService.createTask(this.listPayments).subscribe(dataTask => {
+        alert("Datos guardados con éxito...");
+   }); */
+  }
+
+  onClickReturn()
+  {
 
   }
 

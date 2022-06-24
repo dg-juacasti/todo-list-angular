@@ -16,6 +16,8 @@ button[disabled] {
     background-color: $secondaryColor;
     border-color: $secondaryColor;
     color: $oddColor;
+    margin-right: 10px;
+
   }
   &--secundary {
     color: $black;

@@ -28,4 +28,15 @@ export class TodoService {
     );
   }
 
+  createTask(nuevaTarea: ResponseTodo):Observable<Object>{
+    return this.http.post(`${this.ENPOINT}?idAuthor=${this.ID_AUTOR}`, nuevaTarea);
+  }
+ 
+  updateTask(actualizaTarea: ResponseTodo, idTarea: string):Observable<Object>{
+    return this.http.put(`${this.ENPOINT}/${idTarea}`, actualizaTarea)
+  }
+  eliminarHeroe(idTarea: string):Observable<Object>{
+    return this.http.delete(`${this.ENPOINT}/${idTarea}`)
+   }
+
 }

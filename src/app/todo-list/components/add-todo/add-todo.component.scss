@@ -8,11 +8,12 @@
     padding: 16px 0;
   }
   &__actions {
-    display: grid;
+    display: flex;
     grid-template-columns: 16% 16%;
     grid-gap: 8px;
     justify-content: end;
     padding: 24px 16px 8px 16px;
+    
   }
   &__label-space {
     padding: 16px 0 8px 0;
