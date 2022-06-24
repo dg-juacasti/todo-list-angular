@@ -52,6 +52,15 @@ export class AddTodoComponent implements OnInit {
 
         if (this.isEdit) {
             // Todo: edit todo
+            const updatedTodo: Todo = {
+                ...this.selectedTodo,
+                description: this.descriptionTodo.value,
+                finish_at: this.finishAt.value
+            };
+            this.todoService.updateTodo(updatedTodo).subscribe(value => {
+                    this.router.navigate(['/']);
+                }
+            );
         } else {
             const newTodo: Todo = {
                 description: this.descriptionTodo.value,
