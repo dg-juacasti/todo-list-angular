@@ -1,12 +1,15 @@
 <app-header></app-header>
 
-<form [formGroup]="frmTodo">
+<form [formGroup]="frmTodo" (ngSubmit)="onSubmit()">
   <div class="container__form">
     <div class="container__label-space">
       <label>Descripción</label>
     </div>
     <div>
-      <app-input [frmTodo]="frmTodo"></app-input>
+      <app-input [frmTodo]="frmTodo" id="description" [(ngModel)]="tarea.description" name="description"></app-input>
+      <div *ngIf="!frmTodo.valid">
+        Descripción es requerida.
+     </div>
     </div>
 
     <div class="container__label-space">
@@ -15,24 +18,33 @@
     <div>
       <input
         type="date"
-        id="start"
+        id="finishAt"
         name="todo-start"
         value="2018-07-22"
         min="2022-01-01"
         max="2023-12-31"
         data-date-format="DD MMMM YYYY"
-        formControlName="finishAt"
-      />
+         [(ngModel)]="tarea.finish_at" name="finishAt" />
+      <div *ngIf="!frmTodo.valid" >
+        Fecha límite es requerida
+     </div>
     </div>
 
     <div class="container__actions">
       <div>
         <app-icon-button
-          [textButton]="'Agregar'"
-          (actionClick)="onClickAdd()"
+          [textButton]="'Volver'"
           [disabled]="!frmTodo.valid"
         ></app-icon-button>
       </div>
+
+      <div>
+        <app-icon-button
+          [textButton]="'Agregar'"
+          [disabled]="!frmTodo.valid"
+        ></app-icon-button>
+      </div>
+      
     </div>
   </div>
 </form>

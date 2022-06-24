@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
 import { TodoWrapperComponent } from './todo-list/components/todo-wrapper/todo-wrapper.component';
+import { ActualizarTodoComponent } from './components/actualizar-todo/actualizar-todo.component';
+import { EliminarTodoComponent } from './components/eliminar-todo/eliminar-todo.component';
 
 
 const appRoutes: Routes = [
@@ -21,7 +23,9 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     AddTodoComponent,
-    TodoWrapperComponent
+    TodoWrapperComponent,
+    ActualizarTodoComponent,
+    EliminarTodoComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,14 @@
 
 <div class="container__search">
   <div>
+    <input
+        type="text"
+        id="buscartarea"
+        name="buscar"
+        formControlName="btarea"  placeholder="Buscar Tarea"
+      />
+  </div>
+  <div>
     <app-icon-button
       [classNameIcon]="'fa fa-plus'"
       (actionClick)="addTodo()"
