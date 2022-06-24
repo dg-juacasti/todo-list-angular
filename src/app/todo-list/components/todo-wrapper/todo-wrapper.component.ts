@@ -34,4 +34,9 @@ export class TodoWrapperComponent implements OnInit {
     this.router.navigate(['/todo']);
   }
 
+  buscar() {
+    this.router.navigate(['/todo']);
+  }
+
+
 }

@@ -7,7 +7,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ResponseTodo } from "./todo-list/interfaces/response";
 import { RouterTestingModule } from '@angular/router/testing'
 import { of } from 'rxjs';
-import { AddTodoComponent } from "./todo-list/components/add-todo/add-todo.component";
+import { AddTodoComponent } from "./add-todo.component";
 
 const todoListResponse: ResponseTodo = {
   success: true,
@@ -79,49 +79,12 @@ describe('TodoList App Test', () => {
   it('Should create a new todo', async () => {
   })
 
-  /**
-  *
-  * Probar que el formulario muestre los mensajes de requerimiento cuando
-  * el formulario no tenga la descripción y la fecha ingresada
- */
-  it('Should validate the todo form, description and date required', async () => {
-  })
-  it('Should update a todo, description and date', async () => {
-  })
-  it('Should delete a todo', async () => {
-  })
+  beforeEach(() => {
+    fixture = TestBed.createComponent(todoWrapperComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  /**
-  *
-  * Probar que el formulario muestre los mensajes de requerimiento cuando
-  * el formulario no tenga la descripción y la fecha ingresada
- */
-  it('Should update the todo status ', async () => {
-  })
-  it('Should show an message when  the todo list is empty  ', async () => {
-  })
-
-  /**
-  *
-  * Probar que la barra de estado cambia cuando se completa una tarea
-  * se puede probar por el cambio en texto o por porcentaje de completitud
- */
-  it('Should the progress bar change its label text or percentage when a todo is completed ', async () => {
-  })
-
-  /**
-   *
-   * Probar el filtro de las tareas por descripcion
-  */
-  it('Should filter the todo list by description', async () => {
-  })
-
-  /**
-   *
-   * Probar el filtro de tareas que falta por completar y que una vez esten filtradas a dar click nuevamente
-   * sobre el boton del filtro se muestren todos la lista nuevamente
-  */
-  it('Should filter the todo list by completed status and toggle functionality button', async () => {
-  })
-
-});
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
