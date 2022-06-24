@@ -1,0 +1,21 @@
+<div id="myDIV" class="header">
+    <h2>My To Do List</h2>
+    <input type="text" id="myInput" placeholder="Buscar....">
+    <span routerLink="create" class="addBtn">Agregar</span>
+</div>
+
+<div style="background-color: green; color:white;margin-top: 20px;">
+   No completado {{count}} tasks
+</div>
+
+<div *ngFor="let one of listTodo" style="background-color:rgb(126, 188, 227);">
+    <div>
+        <p>{{one.description}}</p>
+        <p>{{one.finish_at}}</p>
+        <p hidden>{{one.id}}</p>
+    </div>
+    <span>
+        <button type="button">edit</button>
+        <button type="button">delete</button>
+    </span>
+</div>
