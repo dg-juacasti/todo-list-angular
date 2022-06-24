@@ -44,4 +44,8 @@ export class TodoService {
         return this.http.put<ResponseTodo>(`${this.ENPOINT}/${todo.id}`, body, this.httpOptions);
     }
 
+    public deleteTodo(todo: Todo): Observable<ResponseTodo> {
+        return this.http.delete<ResponseTodo>(`${this.ENPOINT}/${todo.id}`, this.httpOptions);
+    }
+
 }

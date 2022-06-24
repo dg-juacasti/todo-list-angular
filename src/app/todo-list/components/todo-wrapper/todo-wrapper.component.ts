@@ -42,4 +42,22 @@ export class TodoWrapperComponent implements OnInit {
         this.router.navigate(['/todo']);
     }
 
+    updateTask(todo: Todo) {
+        console.log('update ' + todo);
+    }
+
+    deleteTask(todo: Todo) {
+        this.todoService.deleteTodo(todo).subscribe(
+            (data) => {
+                if (data.success) {
+                    this.listPayments = this.listPayments.filter(obj => {
+                        return obj.id !== todo.id;
+                    });
+                }
+            },
+            (error) => {
+                alert('Error al eliminar registro');
+            }
+        );
+    }
 }
