@@ -19,9 +19,12 @@
   }
   &__search {
     display: grid;
-    grid-template-columns: 89% 11%;
+    grid-template-columns: 8fr 1fr;
     grid-gap: 8px;
     padding: 8px 0 16px;
+    justify-content: center;
+    align-content: center
+    
   }
 }
 
