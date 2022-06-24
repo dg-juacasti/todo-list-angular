@@ -2,10 +2,20 @@
   display: flex;
   justify-content: center;
   padding-top: 32px;
+  border-color: 1px solid blue;
   &__card {
     background-color: #f5f9f9;
     border-radius: 8px;
     padding: 8px 16px;
     width: 496px;
+  }
+}
+.header {
+
+ &__label{
+  color: rgba(0, 0, 255, 0.548);
+  font-weight: bold;
+  font-size: x-large;
+  display:block
   }
 }

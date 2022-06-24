@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TodoService } from '../../services/todo.service';
 import { Todo } from '../../interfaces/todo';
 import { StateService } from '../../services/state.service';
+import { ResponseTodo } from '../../interfaces/response';
 
 @Component({
   selector: 'app-todo-wrapper',
@@ -12,11 +13,20 @@ import { StateService } from '../../services/state.service';
 export class TodoWrapperComponent implements OnInit {
 
   listPayments: Todo[] = [];
+  interfTodo:ResponseTodo={
+    success: true,
+    type:'',
+    data:[]
+    
+  };
+  public idtask:number
 
   constructor(
     private readonly todoService: TodoService,
     private readonly state: StateService,
-    private router: Router) { }
+    private router: Router) { 
+   
+    }
 
   ngOnInit(): void {
     this.getListTodo();
@@ -34,4 +44,25 @@ export class TodoWrapperComponent implements OnInit {
     this.router.navigate(['/todo']);
   }
 
+  delTask(idtask:number,confirmacion:boolean)
+  {
+    confirmacion=confirm("Seguro de eliminar ")
+    if (confirmacion)
+    {
+      this.todoService.delTodoLista (idtask).subscribe(datos=>
+        {
+        alert("Tarea eliminado...");
+        }) 
+    }
+  }
+
+  updateTask()
+  {
+    
+    this.todoService.updTodoList(this.interfTodo,this.idtask).subscribe(datos=>
+      {
+      alert("Heroe Actualizado")
+    })
+
+  }
 }

@@ -10,9 +10,9 @@ import { StateService } from './state.service';
 })
 export class TodoService {
 
-  private readonly ID_AUTOR = 1;
+  private readonly ID_AUTOR = 23;
   private readonly ENPOINT = 'https://bp-todolist.herokuapp.com';
-
+ /*  https://bp-todolist.herokuapp.com/?id_author=1 */
   constructor(
     private http: HttpClient,
     private readonly state: StateService
@@ -27,5 +27,19 @@ export class TodoService {
       )
     );
   }
+
+  addTodoList(InterfresponseTodo:ResponseTodo):Observable<Object>{
+    return this.http.post(`${this.ENPOINT}/?id_author=${this.ID_AUTOR}`,InterfresponseTodo
+    );
+  }
+
+  updTodoList(InterfresponseTodo:ResponseTodo,idtask:number):Observable<Object>{
+    return this.http.put(`${this.ENPOINT}/${idtask}?id_author=${this.ID_AUTOR}`,InterfresponseTodo)
+  }
+  delTodoLista(idtask:number):Observable<Object>{
+    return this.http.delete(`${this.ENPOINT}/${idtask}?id_author=${this.ID_AUTOR}`)
+  }
+
+   
 
 }

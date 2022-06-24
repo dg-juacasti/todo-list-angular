@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ResponseTodo } from '../../interfaces/response';
+import { Todo } from '../../interfaces/todo';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-add-todo',
@@ -8,10 +11,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddTodoComponent implements OnInit {
 
+  interfTodo:ResponseTodo={
+    success: true,
+    type:'',
+    data:[]
+    
+  }
+/* 
+  interfaceTodo:Todo={
+    
+    id_author: 23,
+    status: 1,
+    description: '',
+    finish_at: '2022-06-24',
+    created_at: '2022-06-24'
+  } */
   public frmTodo: FormGroup;
 
-  constructor(
-    private readonly fb: FormBuilder) {
+  constructor(private Servicio: TodoService,
+    private readonly fb: FormBuilder
+    ) {
   }
 
   ngOnInit(): void {
@@ -22,6 +41,8 @@ export class AddTodoComponent implements OnInit {
   }
 
   onClickAdd() {
+    this.Servicio.addTodoList(this.interfTodo).subscribe(datos=>{
+    })
 
   }
 
