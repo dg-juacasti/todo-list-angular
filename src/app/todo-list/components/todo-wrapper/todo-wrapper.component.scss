@@ -1,5 +1,10 @@
 @import "../../../../assets/scss/util/color-palette.scss";
 
+.completed{
+  color: #ddd;
+  text-decoration: line-through;
+}
+
 .container {
   &__header {
     text-align: center;

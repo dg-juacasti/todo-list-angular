@@ -1,4 +1,4 @@
-export interface Todo {
+export class Todo {
     id?: number;
     id_author: number;
     status: number;

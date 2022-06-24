@@ -1,6 +1,7 @@
 <app-header></app-header>
 
 <div class="container__search">
+  <app-select-todo></app-select-todo>
   <div>
     <app-icon-button
       [classNameIcon]="'fa fa-plus'"
@@ -10,7 +11,7 @@
 </div>
 
 <div class="container__list-todo" *ngFor="let todo of listPayments">
-  <div>
+  <div [ngClass]="{ completed: todo.status === 1 }">
     <input
       type="checkbox"
       (change)="onChangeStatus(todo)"
@@ -27,6 +28,13 @@
     <em class="fa fa-pencil icon--color"></em>
   </div>
   <div>
-    <em class="fa fa-trash-o icon--color"></em>
+    <app-icon-button
+      [classNameIcon]="'fa fa-trash-o icon--color'"
+      (actionClick)="deleteTodo(todo)"
+    ></app-icon-button>
   </div>
+</div>
+
+<div>
+  <app-select-todo-tracking></app-select-todo-tracking>
 </div>

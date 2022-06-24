@@ -34,4 +34,13 @@ export class TodoWrapperComponent implements OnInit {
     this.router.navigate(['/todo']);
   }
 
+  deleteTodo(todo:Todo)
+  {
+  
+    this.todoService.deleteItem(todo).subscribe(i=>{
+      this.router.navigate(['/']);
+     });
+  }
+
+
 }
