@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
 import { TodoWrapperComponent } from './todo-list/components/todo-wrapper/todo-wrapper.component';
+import { TodoService } from './todo-list/services/todo.service';
 
 
 const appRoutes: Routes = [
@@ -35,7 +36,7 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
