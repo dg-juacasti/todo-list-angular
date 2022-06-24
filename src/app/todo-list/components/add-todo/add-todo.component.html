@@ -5,9 +5,11 @@
     <div class="container__label-space">
       <label>Descripción</label>
     </div>
+    
     <div>
       <app-input [frmTodo]="frmTodo"></app-input>
     </div>
+    <div class="error-text" *ngIf="frmTodo.get('descriptionTodo').invalid">Description is required</div>
 
     <div class="container__label-space">
       <label for="start">Fecha límite</label>
@@ -24,9 +26,14 @@
         formControlName="finishAt"
       />
     </div>
+    <div class="error-text" *ngIf="frmTodo.get('finishAt').invalid">Fecha limite is required</div>
 
     <div class="container__actions">
-      <div>
+      <div> 
+        <app-icon-button
+          [textButton]="'Volver'"
+          routerLink="/"
+        ></app-icon-button>
         <app-icon-button
           [textButton]="'Agregar'"
           (actionClick)="onClickAdd()"
