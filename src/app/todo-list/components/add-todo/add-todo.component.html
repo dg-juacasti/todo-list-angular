@@ -6,7 +6,7 @@
       <label>Descripción</label>
     </div>
     <div>
-      <app-input [frmTodo]="frmTodo"></app-input>
+      <app-input [frmTodo]="frmTodo" ></app-input>
     </div>
 
     <div class="container__label-space">
@@ -27,6 +27,14 @@
 
     <div class="container__actions">
       <div>
+        <app-icon-button class="container__actions__volver"
+          [textButton]="'Volver'"
+          (actionClick)="onClickVolver()"
+          [disabled]=false
+          typeButton = "secundary"
+        ></app-icon-button>
+      </div>
+      <div>        
         <app-icon-button
           [textButton]="'Agregar'"
           (actionClick)="onClickAdd()"
