@@ -8,6 +8,8 @@ import { ResponseTodo } from "./todo-list/interfaces/response";
 import { RouterTestingModule } from '@angular/router/testing'
 import { of } from 'rxjs';
 import { AddTodoComponent } from "./todo-list/components/add-todo/add-todo.component";
+import { FormBuilder } from "@angular/forms";
+import { Router } from "@angular/router";
 
 const todoListResponse: ResponseTodo = {
   success: true,
@@ -37,6 +39,7 @@ describe('TodoList App Test', () => {
   let todoWrapperComponent: TodoWrapperComponent;
   let fixture: ComponentFixture<TodoWrapperComponent>;
   let todoService: TodoService;
+  let location: Location;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -53,7 +56,8 @@ describe('TodoList App Test', () => {
       ],
       providers: [
         TodoService,
-        StateService
+        StateService,
+        FormBuilder
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     }).compileComponents();
@@ -77,6 +81,8 @@ describe('TodoList App Test', () => {
   });
 
   it('Should create a new todo', async () => {
+    todoWrapperComponent.addTodo();
+   // expect(location.pathname).toBe('/todo');
   })
 
   /**
@@ -85,8 +91,18 @@ describe('TodoList App Test', () => {
   * el formulario no tenga la descripción y la fecha ingresada
  */
   it('Should validate the todo form, description and date required', async () => {
+    const fixture = TestBed.createComponent(AddTodoComponent);
+    const addtodocomponent = fixture.componentInstance;
+    addtodocomponent.ngOnInit();
+    fixture.detectChanges();
+    let errors = addtodocomponent.frmTodo.get('descriptionTodo').errors;
+    expect({"required": true}).toEqual(errors);
+     errors = addtodocomponent.frmTodo.get('finishAt').errors;
+    expect({"required": true}).toEqual(errors);
+
   })
   it('Should update a todo, description and date', async () => {
+
   })
   it('Should delete a todo', async () => {
   })
@@ -99,6 +115,10 @@ describe('TodoList App Test', () => {
   it('Should update the todo status ', async () => {
   })
   it('Should show an message when  the todo list is empty  ', async () => {
+    todoWrapperComponent.listPayments = [];
+    fixture.detectChanges();
+    const div = fixture.debugElement.nativeElement.querySelector('#todoEmpty');
+    expect(div.innerHTML).toContain('No tienes tareas registradas');
   })
 
   /**
@@ -114,6 +134,8 @@ describe('TodoList App Test', () => {
    * Probar el filtro de las tareas por descripcion
   */
   it('Should filter the todo list by description', async () => {
+    todoWrapperComponent.frmTodo
+    todoWrapperComponent.filterTodo(undefined);
   })
 
   /**

@@ -38,7 +38,9 @@
  [typeButton]="'primary'" [textButton]="filterStatus?'Mostrar Todos':'Mostrar completed'" [classNameIcon]="'fa fa-tasks '"></app-icon-button>
  
 </div>
+<div  id="todoEmpty">
 <div *ngIf="listPayments?.length === 0" class="txt-date"> 
   <i class="fa fa-info"></i> 
   No tienes tareas registradas
  </div>
+</div>
