@@ -1,5 +1,4 @@
 @import "../../../../assets/scss/util/color-palette.scss";
-
 .container {
   &__header {
     text-align: center;
@@ -22,6 +21,8 @@
     grid-template-columns: 89% 11%;
     grid-gap: 8px;
     padding: 8px 0 16px;
+        display: inline-block;
+        margin: 0 10px;
   }
 }
 

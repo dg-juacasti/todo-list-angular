@@ -13,25 +13,15 @@
       <label for="start">Fecha límite</label>
     </div>
     <div>
-      <input
-        type="date"
-        id="start"
-        name="todo-start"
-        value="2018-07-22"
-        min="2022-01-01"
-        max="2023-12-31"
-        data-date-format="DD MMMM YYYY"
-        formControlName="finishAt"
-      />
+            <input type="date" id="start" name="todo-start" value="2018-07-22" min="2022-01-01" max="2023-12-31" data-date-format="DD MMMM YYYY" formControlName="finishAt" />
     </div>
 
     <div class="container__actions">
       <div>
-        <app-icon-button
-          [textButton]="'Agregar'"
-          (actionClick)="onClickAdd()"
-          [disabled]="!frmTodo.valid"
-        ></app-icon-button>
+                <app-icon-button [textButton]="'Volver'" (actionClick)="goToPage('/')"></app-icon-button>
+            </div>
+            <div>
+                <app-icon-button [textButton]="'Agregar'" (actionClick)="onClickAdd()" [disabled]="!frmTodo.valid"></app-icon-button>
       </div>
     </div>
   </div>

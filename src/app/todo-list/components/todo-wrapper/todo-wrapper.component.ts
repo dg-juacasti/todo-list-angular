@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { TodoService } from '../../services/todo.service';
 import { Todo } from '../../interfaces/todo';
 import { StateService } from '../../services/state.service';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-todo-wrapper',
@@ -12,6 +14,8 @@ import { StateService } from '../../services/state.service';
 export class TodoWrapperComponent implements OnInit {
 
   listPayments: Todo[] = [];
+  searchTerm$ = new BehaviorSubject<string>('');
+  listFiltered$: Observable<Todo []>;
 
   constructor(
     private readonly todoService: TodoService,
@@ -33,5 +37,31 @@ export class TodoWrapperComponent implements OnInit {
   addTodo() {
     this.router.navigate(['/todo']);
   }
+
+  filterList(): void {
+    this.listFiltered$ = this.searchTerm$
+      .pipe(
+        debounceTime(400),
+        distinctUntilChanged(),
+        map(term => {
+            return this.listPayments
+              .filter(item => item.description.toLowerCase().indexOf(term.toLowerCase()) >= 0);
+        })
+      );
+  }
+
+  borrarTarea(){
+    console.log('borrar');
+
+
+  }
+  actualizarTarea(){
+    console.log('actualizar');
+
+
+  }
+
+
+
 
 }

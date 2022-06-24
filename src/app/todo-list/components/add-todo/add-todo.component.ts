@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TodoService } from '../../services/todo.service';
+import { Todo } from '../../interfaces/todo';
+import { StateService } from '../../services/state.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-add-todo',
@@ -7,10 +12,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-todo.component.scss']
 })
 export class AddTodoComponent implements OnInit {
-
+  todo: Todo;
   public frmTodo: FormGroup;
 
-  constructor(
+  constructor(private readonly todoService: TodoService,
+    private readonly state: StateService,
+    private router: Router,
     private readonly fb: FormBuilder) {
   }
 
@@ -22,8 +29,13 @@ export class AddTodoComponent implements OnInit {
   }
 
   onClickAdd() {
-
+    let desc=this.frmTodo.controls.descriptionTodo.value;
+    let fecha=this.frmTodo.controls.finishAt.value;
+    this.todoService.crearTarea(desc,fecha).subscribe();
   }
 
+  goToPage(pageName:string){
+    this.router.navigate([`${pageName}`]);
+  }
 
 }
