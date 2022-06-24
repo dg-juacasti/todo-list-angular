@@ -2,6 +2,14 @@
 
 <div class="container__search">
   <div>
+    <input
+        id="filter"
+        [(ngModel)]="filter"
+        placeholder="Buscar tarea"
+        (ngModelChange)="search()"
+      />
+  </div>
+  <div>
     <app-icon-button
       [classNameIcon]="'fa fa-plus'"
       (actionClick)="addTodo()"
@@ -9,6 +17,10 @@
   </div>
 </div>
 
+<div *ngIf="!listPayments || listPayments.length===0" id="emptylist" class="container__empty-list">
+  <em class="fa fa-info-circle" aria-hidden="true"></em>
+  <label>No tienes tareas registradas</label>
+</div>
 <div class="container__list-todo" *ngFor="let todo of listPayments">
   <div>
     <input
@@ -17,16 +29,33 @@
       [checked]="todo.status === 1"
     />
   </div>
-  <div [ngClass]="{ 'todo-finished': todo.status === 1 }">
-    {{ todo.description }}
-  </div>
-  <div class="txt-date" [ngClass]="{ 'todo-finished': todo.status === 1 }">
-    {{ todo.finish_at | date: "dd/MM/yyyy" }}
+  <div class="tododetail">
+    <div [ngClass]="{ 'todo-finished': todo.status === 1 }">
+      {{ todo.description }}
+    </div>
+    <div class="txt-date" [ngClass]="{ 'todo-finished': todo.status === 1 }">
+      {{ todo.finish_at | slice: 0:10 | date: "dd/MM/yyyy" }}
+    </div>
   </div>
   <div>
-    <em class="fa fa-pencil icon--color"></em>
+    <em class="fa fa-pencil icon--color" (click)="onClickEdit(todo)"></em>
   </div>
   <div>
-    <em class="fa fa-trash-o icon--color"></em>
+    <em class="fa fa-trash-o icon--color" (click)="onClickDelete(todo)"></em>
+  </div>
+</div>
+
+<div class="container__footer">
+  <div class="container__footer--first">
+    <app-icon-button *ngIf="listPayments" typeButton="secundary"
+      [textButton]="todoCompleted + ' de '+ listPayments.length + ' tarea(s) completada(s)'"
+    ></app-icon-button>
+  </div>
+  <div class="container__footer--last">
+    
+    <app-icon-button
+    [textButton]="showedAll ? 'Mostrar no completadas': 'Mostrar todas'" classNameIcon="fa fa-list"
+    (actionClick)="onClicShowAll()"
+  ></app-icon-button>
   </div>
 </div>

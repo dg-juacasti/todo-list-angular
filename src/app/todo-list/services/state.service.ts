@@ -8,6 +8,7 @@ import { Todo } from '../interfaces/todo';
 export class StateService {
 
   public todoSelect$ = new BehaviorSubject<Todo>(undefined);
+  public todoDeleted$ = new BehaviorSubject<Todo>(undefined);
   public todoList$ = new BehaviorSubject<Todo[]>(undefined);
 
   constructor() { }
@@ -28,4 +29,11 @@ export class StateService {
     this.todoList$.next(value);
   }
 
+  get todoDeleted() {
+    return this.todoDeleted$.getValue();
+  }
+
+  setTodoDeleted(value: Todo) {
+    this.todoDeleted$.next(value);
+  }
 }

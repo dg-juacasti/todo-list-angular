@@ -20,6 +20,7 @@ export class InputComponent implements OnInit {
 
   onKeyUp(event) {
     this.onKeyUpEvent.emit(event);
+    console.log(this.frmTodo)
   }
 
 }
