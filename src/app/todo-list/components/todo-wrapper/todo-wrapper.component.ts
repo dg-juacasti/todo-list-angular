@@ -17,6 +17,7 @@ export class TodoWrapperComponent implements OnInit {
     searchText = '';
     completedTasks = 0;
     totalTasks = 0;
+    percentage = 0;
 
     constructor(
         private readonly todoService: TodoService,
@@ -34,7 +35,10 @@ export class TodoWrapperComponent implements OnInit {
                         this.completedTasks++;
                     }
                 });
+                this.totalTasks = resp.length;
+                this.percentage = Math.round((this.completedTasks / this.totalTasks) * 100);
             }
+
         });
     }
 

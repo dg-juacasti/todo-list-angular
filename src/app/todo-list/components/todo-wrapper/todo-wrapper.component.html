@@ -47,7 +47,15 @@
     <div class="container__actions flex_btn">
         <div>
             <button class="completedbtn">
-                {{completedTasks}} de {{totalTasks}} Tareas completadas
+                 <span class="z-10">
+                    {{completedTasks}} de {{totalTasks}} Tareas completadas
+                </span>
+                <div class="loading"
+                     style="width: {{ percentage }}%"
+                >
+
+                </div>
+
             </button>
 
         </div>
