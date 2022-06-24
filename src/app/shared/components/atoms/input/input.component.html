@@ -1,8 +1,30 @@
-<div [formGroup]="frmTodo">
-  <input
-    type="text"
-    formControlName="descriptionTodo"
-    placeholder="{{ placeholder }}"
-    (keyup)="onKeyUp($event)"
-  />
+<div [ngClass]="{ error: hasErrors }">
+	<input
+		*ngIf="type === 'text'"
+		[type]="type"
+		[value]="value"
+		[formControl]="formControl"
+		[attr.maxlength]="maxLength"
+		[placeholder]="placeholder"
+		(keyup)="onKeyUp($event)"
+	/>
+	<input
+		*ngIf="type === 'date'"
+		type="date"
+		[formControl]="formControl"
+		[id]="id"
+		[value]="'03/06/2022'"
+		[min]="min"
+		[max]="max"
+		[data-date-format]="format"
+		(keyup)="onKeyUp($event)"
+	/>
+	<ng-container *ngIf="hasErrors">
+		<span *ngIf="!minLength" class="error"
+			>Por favor complete correctamente</span
+		>
+		<span *ngIf="minLength" class="error"
+			>Debe tener al menos {{ min }} carácteres</span
+		>
+	</ng-container>
 </div>

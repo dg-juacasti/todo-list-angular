@@ -1,5 +1,10 @@
 @import "../../../../assets/scss/util/color-palette.scss";
 
+.showMobile {
+  display: none;
+}
+
+
 .container {
   &__header {
     text-align: center;
@@ -23,6 +28,25 @@
     grid-gap: 8px;
     padding: 8px 0 16px;
   }
+  &__list-info {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 50px;
+  }
+  &__list-progress {
+    border: 1px solid gray;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__no-data {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: $secondaryColor;
+      font-size: 32px;
+  }
 }
 
 .todo-finished {
@@ -31,4 +55,20 @@
 
 .txt-date {
   color: $textColor2;
+}
+
+@media (max-width: 614px) {
+  .showPc {
+  display: none;
+  }
+  .showMobile {
+    display: block;
+  }
+
+  .container {
+    &__list-todo {
+    display: grid;
+    grid-template-columns: 8% auto 8% 8%;
+  }
+  }
 }
