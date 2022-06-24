@@ -4,6 +4,7 @@
   &__header {
     text-align: center;
   }
+
   &__list-todo {
     display: grid;
     grid-template-columns: 8% auto 30% 8% 8%;
@@ -11,12 +12,15 @@
     padding: 14px 12px;
     color: #1e6395;
   }
+
   &__list-todo:nth-child(even) {
     background: #edf8fe;
   }
+
   &__list-todo:nth-child(odd) {
     background: #f5f9f9;
   }
+
   &__search {
     display: grid;
     grid-template-columns: 89% 11%;
@@ -31,4 +35,30 @@
 
 .txt-date {
   color: $textColor2;
+}
+
+.card-second {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 35px;
+}
+
+.info-color {
+  color: white;
+  background-color: #175472;
+  font-size: 19px;
+  width: 27px;
+  height: 26px;
+  border-radius: 50%;
+  text-align: center;
+  margin-left: 50%;
+  padding: 5px;
+}
+
+h2 {
+  padding-top: 20px;
+  padding-bottom: 60px;
+  color: #4c9cc3;
+  font-size: 28px;
 }
