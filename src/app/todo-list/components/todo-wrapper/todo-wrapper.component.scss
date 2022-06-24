@@ -4,10 +4,17 @@
   &__header {
     text-align: center;
   }
+  &__description {
+    @media (min-width: 575px) {
+      display: flex;
+      flex-direction: row;
+      grid-gap: 10px;
+    }
+  }
   &__list-todo {
     display: grid;
-    grid-template-columns: 8% auto 30% 8% 8%;
-    grid-gap: 8px;
+    grid-template-columns: 8% auto 8% 8%;
+    grid-gap: 10px;
     padding: 14px 12px;
     color: #1e6395;
   }
@@ -25,6 +32,14 @@
   }
   &__footer {
     padding: 16px 0 16px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    grid-gap: 10px;
+    justify-content: space-around;
+    @media (min-width: 575px) {
+      flex-direction: row;
+    }
   }
   &__alert {
     padding: 40px 0px;
@@ -39,5 +54,43 @@
 }
 
 .txt-date {
+  @media (max-width: 575px) {
+    padding-top: 8px;
+  }
   color: $textColor2;
+}
+
+progress {
+  -webkit-appearance: none;
+  height: 50px;
+  border-radius: 5px;
+}
+
+progress::-webkit-progress-bar {
+  background-color: $white;
+  border-radius: 5px;
+}
+
+progress::-webkit-progress-value {
+  border-radius: 5px;
+  background: $progress;
+}
+
+.progress {
+  &-span {
+    padding: 8px 8px;
+    font-size: 12px;
+    position: absolute;
+    display: flex;
+    color: #000;
+    text-align: center;
+    align-items: center;
+    border-radius: 5px;
+    height: 50px;
+  }
+  display: block;
+  position: relative;
+  border: solid 0.5px $textColor1;
+  border-radius: 5px;
+  width: auto;
 }
