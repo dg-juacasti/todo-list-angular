@@ -22,6 +22,32 @@
     grid-template-columns: 89% 11%;
     grid-gap: 8px;
     padding: 8px 0 16px;
+    input{
+      width: 80%;
+    }
+  }
+
+  &__progress-todo {
+    padding-top: 40px;
+    &__progress{
+      margin-left: 40px;
+      margin-bottom: 10px;
+      border: 1px solid #c8c8c8;
+      border-radius: 5px;
+      width: 75%;
+      height: 35px;
+      padding-top: 5px;
+      padding-left: 10px;
+    }
+    &__button {
+      margin-left: 32px;
+      background: #4c9cc3;
+      width: 80%;
+      height: 35px;
+      border: none;
+      border-radius: 2px;
+      color: white;
+    }
   }
 }
 
@@ -31,4 +57,19 @@
 
 .txt-date {
   color: $textColor2;
+}
+
+@media (max-width: 480px) {
+
+  .txt-date {
+    margin-top: 20px;
+    margin-left: 30px;
+    position: absolute;
+  }
+
+  .container {
+    &__list-todo {
+      padding-bottom: 30px;
+    }
+  }
 }

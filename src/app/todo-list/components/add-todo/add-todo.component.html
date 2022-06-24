@@ -6,7 +6,8 @@
       <label>Descripción</label>
     </div>
     <div>
-      <app-input [frmTodo]="frmTodo"></app-input>
+      <app-input placeholder= "Descripcion" [frmTodo]="frmTodo"></app-input>
+      <span *ngIf="frmTodo.controls['descriptionTodo'].invalid">Descripción es requerida</span>
     </div>
 
     <div class="container__label-space">
@@ -23,14 +24,22 @@
         data-date-format="DD MMMM YYYY"
         formControlName="finishAt"
       />
+      <span *ngIf="frmTodo.controls['finishAt'].invalid">Fecha límite es requerida</span>
     </div>
 
     <div class="container__actions">
       <div>
         <app-icon-button
-          [textButton]="'Agregar'"
-          (actionClick)="onClickAdd()"
-          [disabled]="!frmTodo.valid"
+          [textButton]="'Volver'"
+          (actionClick)="onCLickBack()"
+          typeButton="secundary"
+        ></app-icon-button>
+      </div>
+      <div>
+        <app-icon-button
+                [textButton]="'Agregar'"
+                (actionClick)="onClickAdd()"
+                [disabled]="!frmTodo.valid"
         ></app-icon-button>
       </div>
     </div>

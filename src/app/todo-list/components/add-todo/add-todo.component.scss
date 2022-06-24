@@ -20,6 +20,11 @@
   }
 }
 
+span{
+  font-size: 10px;
+  color: red;
+}
+
 @media (max-width: 991.98px) {
   .container {
     &__actions {
