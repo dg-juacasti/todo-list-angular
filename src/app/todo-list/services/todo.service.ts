@@ -49,25 +49,34 @@ export class TodoService {
     },
   };
 
-  actualizarTarea( desc:string, fechaFin:string, idTarea:number ):Observable<Todo> {
-    let todo: Todo;
+  actualizarTarea(todo: Todo):Observable<Todo> {
     todo ={
-      id: idTarea,
+      id: todo.id,
       id_author: this.ID_AUTOR,
       status: 0,
-      description: desc,
-      finish_at: fechaFin,
+      description: todo.description,
+      finish_at: todo.finish_at,
     };
-    return this.http.post<Todo>(
-      `${this.ENPOINT}/?id_author=${this.ID_AUTOR}`,
+    return this.http.put<Todo>(
+      `${this.ENPOINT}/${todo.id}`,
       todo,
       this.httpOptions
     );
   }
 
 
-eliminarTarea(){
-  
+eliminarTarea(todo: Todo){
+  todo ={
+    id: todo.id,
+    id_author: this.ID_AUTOR,
+    status: 0,
+    description: todo.description,
+    finish_at: todo.finish_at,
+  };
+  return this.http.delete<Todo>(
+    `${this.ENPOINT}/${todo.id}`,
+    this.httpOptions
+  );
 }
 
 }

@@ -50,14 +50,19 @@ export class TodoWrapperComponent implements OnInit {
       );
   }
 
-  borrarTarea(){
-    console.log('borrar');
+  borrarTarea(todo:Todo){
+    console.log('borrar '+todo.id);
+    this.todoService.eliminarTarea(todo).subscribe(i=>{
+      this.router.navigate(['/']);
+     });
 
 
   }
-  actualizarTarea(){
-    console.log('actualizar');
-
+  actualizarTarea(todo:Todo){
+    console.log('actualizar '+todo.id);
+    this.todoService.actualizarTarea(todo).subscribe(i=>{
+      this.router.navigate(['/']);
+     });
 
   }
 
