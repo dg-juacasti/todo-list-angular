@@ -39,3 +39,12 @@ input[type="date"] {
 .w-100 {
   width: 100%;
 }
+.msn-error {
+  color: red;
+  font-size:small;
+}
+.container__actions{
+
+  display:flex;
+flex-direction: column;
+}

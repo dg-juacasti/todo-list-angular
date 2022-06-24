@@ -6,7 +6,7 @@
       <label>Descripción</label>
     </div>
     <div>
-      <app-input [frmTodo]="frmTodo"></app-input>
+      <app-input [frmTodo]="frmTodo" (onKeyUpEvent)="descripcionTodo($event)"></app-input>
     </div>
 
     <div class="container__label-space">
@@ -23,15 +23,26 @@
         data-date-format="DD MMMM YYYY"
         formControlName="finishAt"
       />
+      <div class="general-error" *ngIf="frmTodo.controls['finishAt'].invalid">
+        <span class="msn-error">La fecha Limite es obligatorio</span>
+        </div>
     </div>
 
     <div class="container__actions">
       <div>
         <app-icon-button
+        [textButton]="'Regresar'"
+        (actionClick)="onClickRegresar()"
+       
+      >
+    </app-icon-button>
+
+        <app-icon-button
           [textButton]="'Agregar'"
           (actionClick)="onClickAdd()"
           [disabled]="!frmTodo.valid"
-        ></app-icon-button>
+        >
+      </app-icon-button>
       </div>
     </div>
   </div>

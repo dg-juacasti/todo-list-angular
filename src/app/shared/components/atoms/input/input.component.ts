@@ -19,7 +19,10 @@ export class InputComponent implements OnInit {
   }
 
   onKeyUp(event) {
-    this.onKeyUpEvent.emit(event);
+
+    let descripcionTodo = this.frmTodo.get("descriptionTodo").value;
+    console.log("Descripcion de Todo:" +descripcionTodo);
+    this.onKeyUpEvent.emit(descripcionTodo);
   }
 
 }

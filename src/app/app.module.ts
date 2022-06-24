@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
 import { TodoWrapperComponent } from './todo-list/components/todo-wrapper/todo-wrapper.component';
+import { FiltroPorLetraPipe } from './shared/_pipes/filtro-por-letra.pipe';
 
 
 const appRoutes: Routes = [
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     AddTodoComponent,
-    TodoWrapperComponent
+    TodoWrapperComponent,
+    FiltroPorLetraPipe
   ],
   imports: [
     BrowserModule,
