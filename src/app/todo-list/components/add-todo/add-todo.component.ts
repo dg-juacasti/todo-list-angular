@@ -17,6 +17,8 @@ export class AddTodoComponent implements OnInit {
 
     selectedTodo: Todo;
 
+    isEdit = false;
+
     constructor(
         private readonly fb: FormBuilder,
         private router: Router,
@@ -35,6 +37,7 @@ export class AddTodoComponent implements OnInit {
 
     editData(todo: any) {
         if (todo) {
+            this.isEdit = true;
             this.selectedTodo = todo;
             this.frmTodo.patchValue({
                 descriptionTodo: this.selectedTodo.description,
@@ -47,17 +50,22 @@ export class AddTodoComponent implements OnInit {
 
     onClickAdd() {
 
-        const newTodo: Todo = {
-            description: this.descriptionTodo.value,
-            status: 0,
-            id_author: 34,
-            finish_at: this.finishAt.value
-        };
+        if (this.isEdit) {
+            // Todo: edit todo
+        } else {
+            const newTodo: Todo = {
+                description: this.descriptionTodo.value,
+                status: 0,
+                id_author: 34,
+                finish_at: this.finishAt.value
+            };
 
-        this.todoService.addTodo(newTodo).subscribe(value => {
-                this.router.navigate(['/']);
-            }
-        );
+            this.todoService.addTodo(newTodo).subscribe(value => {
+                    this.router.navigate(['/']);
+                }
+            );
+
+        }
 
     }
 
