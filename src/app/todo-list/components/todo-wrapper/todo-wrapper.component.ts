@@ -43,7 +43,7 @@ export class TodoWrapperComponent implements OnInit {
     }
 
     updateTask(todo: Todo) {
-        console.log('update ' + todo);
+        this.router.navigate([`/${todo.id}`]);
     }
 
     deleteTask(todo: Todo) {

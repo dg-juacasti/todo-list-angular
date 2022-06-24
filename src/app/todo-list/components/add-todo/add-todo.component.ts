@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TodoService} from '../../services/todo.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Todo} from '../../interfaces/todo';
+import {StateService} from '../../services/state.service';
 
 @Component({
     selector: 'app-add-todo',
@@ -13,6 +14,7 @@ export class AddTodoComponent implements OnInit {
 
     public frmTodo: FormGroup;
     todoURLParam = '';
+    textButton = 'Agregar';
     todo: Todo = {
         id_author: 6,
         status: 0,
@@ -23,12 +25,16 @@ export class AddTodoComponent implements OnInit {
     constructor(
         private readonly fb: FormBuilder,
         private todoService: TodoService, private router: Router,
+        private readonly state: StateService,
         private route: ActivatedRoute,
     ) {
     }
 
     ngOnInit(): void {
-        this.getParamsRoute();
+        this.todoURLParam = this.route.snapshot.params.todoURLParam;
+        if (this.todoURLParam !== 'todo') {
+            this.configureForEdit();
+        }
         this.frmTodo = this.fb.group({
             descriptionTodo: [null, [Validators.maxLength(50), Validators.required]],
             finishAt: [null, [Validators.required]]
@@ -36,8 +42,25 @@ export class AddTodoComponent implements OnInit {
 
     }
 
-    private getParamsRoute() {
-        this.todoURLParam = this.route.snapshot.params.todoURLParam;
+    private configureForEdit(): void {
+        const id: number = +this.todoURLParam;
+        this.textButton = 'Editar';
+        this.todoService.getTodoList().subscribe(resp => {
+            if (resp.data) {
+                this.todo = resp.data.filter(obj => {
+                    return obj.id === id;
+                })[0];
+                this.frmTodo = this.fb.group({
+                    descriptionTodo: [this.todo.description, [Validators.maxLength(50), Validators.required]],
+                    finishAt: [this.todo.finish_at, [Validators.required]]
+                });
+            } else {
+                console.error('No se encontro el registro');
+            }
+        }, error => {
+            console.error('No se encontro el registro');
+
+        });
     }
 
     onClickAdd() {
@@ -45,7 +68,7 @@ export class AddTodoComponent implements OnInit {
         this.todo.status = 0;
         this.todo.finish_at = this.frmTodo.value.finishAt;
         this.todo.id_author = 16;
-
+        console.log(this.todo);
         if (this.todoURLParam === 'todo') {
             this.todoService.postNewTodo(this.todo).subscribe(
                 (data) => {
@@ -61,18 +84,23 @@ export class AddTodoComponent implements OnInit {
                     alert('Error al crear registro');
                 }
             );
+
+        } else {
+        this.todoService.updateTodo(this.todo).subscribe(
+            (data) => {
+                if (data.success) {
+                    alert('actualizado exitosamente');
+                    this.router.navigate(['/']);
+                } else {
+                    alert('Error al actualizar registro');
+                    console.error(data);
+                }
+            },
+            (error) => {
+                alert('Error al actualizar registro');
+            }
+        );
         }
-        // } else {
-        // this.heroesService.updateMarvelHero(this.hero).subscribe(
-        //     (data) => {
-        //       alert('actualizado exitosamente');
-        //       this.router.navigate(['/']);
-        //     },
-        //     (error) => {
-        //       alert('Error al actualizar registro');
-        //     }
-        // );
-        // }
     }
 
 
