@@ -12,6 +12,8 @@ import {StateService} from '../../services/state.service';
 export class TodoWrapperComponent implements OnInit {
 
     listPayments: Todo[] = [];
+    textButton = 'Mostrar no completados';
+    isfilterActive = false;
     searchText = '';
 
     constructor(
@@ -59,5 +61,14 @@ export class TodoWrapperComponent implements OnInit {
                 alert('Error al eliminar registro');
             }
         );
+    }
+
+    onClickFilter() {
+        this.isfilterActive = !this.isfilterActive;
+        if (this.isfilterActive) {
+            this.textButton = 'Mostrar todos';
+        } else {
+            this.textButton = 'Mostrar no completados';
+        }
     }
 }
