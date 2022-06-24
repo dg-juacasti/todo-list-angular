@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box ;
+}
+.container__form {
+    display: grid;
+    grid-template-columns: repeat(1fr);
+    grid-gap: 8px;
+    padding: 16px 0;
+}
+.container__actions {
+    display: grid;
+    grid-template-columns: 16% 16%;
+    grid-gap: 8px;
+    justify-content: end;
+    padding: 24px 16px 8px 16px;
+}
+.container__label-space {
+    padding: 16px 0 8px 0;
+    color: textColor2;
+}
+@media (max-width: 991.98px) {
+    .container__actions {
+        grid-template-columns: 24% 24%;
+        padding-right: 0;
+   }
+}
