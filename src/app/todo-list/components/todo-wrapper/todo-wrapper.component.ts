@@ -39,6 +39,7 @@ export class TodoWrapperComponent implements OnInit {
 
   onChangeStatus(todo: Todo) {
     todo.status === 1?todo.status = 0:todo.status = 1;
+    this.todoService.editTodo(todo, todo.id).subscribe(resp=>{});
   }
 
   addTodo() {

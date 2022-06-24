@@ -7,6 +7,8 @@
     </div>
     <div>
       <app-input [frmTodo]="frmTodo"></app-input>
+      <div class="error-text" *ngIf="frmTodo.get('descriptionTodo').invalid">Description is required</div>
+
     </div>
 
     <div class="container__label-space">
@@ -23,6 +25,7 @@
         data-date-format="DD MMMM YYYY"
         formControlName="finishAt"
       />
+      <div class="error-text" *ngIf="frmTodo.get('finishAt').invalid">Date is required</div>
     </div>
 
     <div class="container__actions">
