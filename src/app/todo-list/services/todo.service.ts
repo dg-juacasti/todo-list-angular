@@ -10,8 +10,9 @@ import { StateService } from './state.service';
 })
 export class TodoService {
 
-  private readonly ID_AUTOR = 1;
+  private readonly ID_AUTOR = 35;
   private readonly ENPOINT = 'https://bp-todolist.herokuapp.com';
+  httpClient: any;
 
   constructor(
     private http: HttpClient,
@@ -26,6 +27,19 @@ export class TodoService {
         }
       )
     );
+  }
+
+  postTodoList(nuevaTodoLista : ResponseTodo) : Observable <Object> | undefined{
+    return this.http.post(`${this.ENPOINT}/?id_author=${this.ID_AUTOR}`, nuevaTodoLista)
+
+  }
+
+  putTodoList(actualiTodoLista : ResponseTodo, id_author : string) : Observable <Object> {
+    return this.http.put(`${this.ENPOINT}/3}`,actualiTodoLista)
+  }
+
+  deleteTodoList(idAuthor : string) : Observable <Object> {
+    return this.http.delete(`${this.ENPOINT}/3}`)
   }
 
 }

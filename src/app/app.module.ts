@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
 import { TodoWrapperComponent } from './todo-list/components/todo-wrapper/todo-wrapper.component';
+import { NuevaListaComponent } from './todo-lis/tcomponents/nueva-lista/nueva-lista.component';
+import { ActualizaListaComponent } from './todo-list/components/actualiza-lista/actualiza-lista.component';
 
 
 const appRoutes: Routes = [
@@ -21,7 +23,9 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     AddTodoComponent,
-    TodoWrapperComponent
+    TodoWrapperComponent,
+    NuevaListaComponent,
+    ActualizaListaComponent
   ],
   imports: [
     BrowserModule,
