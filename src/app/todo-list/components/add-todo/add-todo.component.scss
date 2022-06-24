@@ -17,6 +17,7 @@
   &__label-space {
     padding: 16px 0 8px 0;
     color: $textColor2;
+
   }
 }
 
@@ -27,4 +28,7 @@
       padding-right: 0;
     }
   }
+}
+.small-text{
+  color: rgb(216, 25, 25);
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter,Output} from '@angular/core';
 import { Router } from '@angular/router';
 import { TodoService } from '../../services/todo.service';
 import { Todo } from '../../interfaces/todo';
@@ -12,6 +12,7 @@ import { StateService } from '../../services/state.service';
 export class TodoWrapperComponent implements OnInit {
 
   listPayments: Todo[] = [];
+  description:string = "";
 
   constructor(
     private readonly todoService: TodoService,
@@ -28,10 +29,38 @@ export class TodoWrapperComponent implements OnInit {
   }
 
   onChangeStatus(todo: Todo) {
+    todo.status === 0? todo.status =1:todo.status =0;
   }
 
+  deleteTask(todo:Todo){
+    console.log("entro a eliminar..",todo);
+    this.todoService.deleteTodoList(todo.id).subscribe((mensaje:any) => 
+    {console.log(mensaje.success)
+    });
+    this.getListTodo();
+  }
+
+  editarTask(todo:Todo){
+    this.router.navigate(['/todo'], { queryParams: { id: todo.id } });
+  }
   addTodo() {
     this.router.navigate(['/todo']);
+  }
+
+  realizeSearch(description){
+   
+    const result = this.listPayments.filter((obj) => {
+
+      return obj.description === description;
+    });
+    if(result.length >0){
+      this.listPayments = result;
+    }else{
+      this.getListTodo();
+    }
+    
+    console.log ("result",result);
+    console.log ("listPayments",this.listPayments);
   }
 
 }

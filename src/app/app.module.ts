@@ -11,7 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
 import { TodoWrapperComponent } from './todo-list/components/todo-wrapper/todo-wrapper.component';
 
-
 const appRoutes: Routes = [
   { path: '', component: TodoWrapperComponent },
   { path: 'todo', component: AddTodoComponent }
