@@ -6,24 +6,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './add-todo.component.html',
   styleUrls: ['./add-todo.component.scss']
 })
-export class AddTodoComponent implements OnInit {
 
-  public frmTodo: FormGroup;
-
-  constructor(
-    private readonly fb: FormBuilder) {
+export class AddTodoComponent {
+    public descripcion: string
+    public terminada: boolean
+  constructor(descripcion: string, terminada?: boolean) {
+      this.terminada = terminada ? terminada : false;
+      this.descripcion = descripcion;
   }
-
-  ngOnInit(): void {
-    this.frmTodo = this.fb.group({
-      descriptionTodo: [null, [Validators.maxLength(50), Validators.required]],
-      finishAt: [null, [Validators.required]]
-    });
-  }
-
-  onClickAdd() {
-
-  }
-
 
 }

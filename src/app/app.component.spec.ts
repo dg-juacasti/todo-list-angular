@@ -29,6 +29,14 @@ const todoListResponse: ResponseTodo = {
       finish_at: '2022-06-16T00:00:00.000Z',
       created_at: '2022-06-14T13:14:08.000Z',
     },
+    {
+      id: 24,
+      description: 'Nuevo Todo',
+      status: 0,
+      id_author: 1,
+      finish_at: '2022-06-16T00:00:00.000Z',
+      created_at: '2022-06-14T13:14:08.000Z',
+    },
   ],
 };
 
