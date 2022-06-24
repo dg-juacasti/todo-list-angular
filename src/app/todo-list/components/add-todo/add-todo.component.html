@@ -25,7 +25,14 @@
       />
     </div>
 
-    <div class="container__actions">
+    <div class="container__actions flex_btn">
+      <div>
+        <app-icon-button
+                [textButton]="'Volver'"
+                [typeButton]="'secundary'"
+                (actionClick)="onClickReturn()"
+        ></app-icon-button>
+      </div>
       <div>
         <app-icon-button
           [textButton]="textButton"

@@ -19,6 +19,18 @@
     color: $textColor2;
   }
 }
+.flex_btn{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+@media (min-width: 250px) {
+  .flex_btn{
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+  }
+}
 
 @media (max-width: 991.98px) {
   .container {

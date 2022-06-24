@@ -103,5 +103,9 @@ export class AddTodoComponent implements OnInit {
         }
     }
 
+    onClickReturn() {
+        this.router.navigate(['/']);
+    }
+
 
 }
