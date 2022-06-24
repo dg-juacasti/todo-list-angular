@@ -45,13 +45,13 @@
     </ng-container>
 
     <div class="container__actions flex_btn">
-        <div>
-            <app-icon-button
-                    [textButton]="'Tareas Completadas'"
-                    [typeButton]="'secundary'"
-                    
-            ></app-icon-button>
-        </div>
+
+        <button
+
+
+        >
+            {{completedTasks}} de {{totalTasks}} Tareas completadas
+        </button>
         <div>
             <app-icon-button
                     [textButton]="textButton"

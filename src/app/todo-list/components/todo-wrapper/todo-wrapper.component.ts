@@ -15,6 +15,8 @@ export class TodoWrapperComponent implements OnInit {
     textButton = 'Mostrar no completados';
     isfilterActive = false;
     searchText = '';
+    completedTasks = 0;
+    totalTasks = 0;
 
     constructor(
         private readonly todoService: TodoService,
@@ -24,7 +26,16 @@ export class TodoWrapperComponent implements OnInit {
 
     ngOnInit(): void {
         this.getListTodo();
-        this.state.todoList$.subscribe(resp => this.listPayments = resp);
+        this.state.todoList$.subscribe(resp => {
+            this.listPayments = resp;
+            if (resp) {
+                resp.forEach(todo => {
+                    if (todo.status === 1) {
+                        this.completedTasks++;
+                    }
+                });
+            }
+        });
     }
 
     getListTodo() {
