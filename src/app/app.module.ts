@@ -18,10 +18,11 @@ const appRoutes: Routes = [
     {path: '', component: TodoWrapperComponent},
     {path: 'todo', component: AddTodoComponent},
     {
-        path: 'todo/:id', component:
-        AddTodoComponent, resolve: {
+        path: 'todo/:id',
+        component: AddTodoComponent,
+        resolve: {
             todo: TodoResolver
-        },
+        }
     }
 ];
 
@@ -44,7 +45,7 @@ const appRoutes: Routes = [
             appRoutes
         )
     ],
-    providers: [DatePipe],
+    providers: [DatePipe, TodoResolver],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA,
         NO_ERRORS_SCHEMA],

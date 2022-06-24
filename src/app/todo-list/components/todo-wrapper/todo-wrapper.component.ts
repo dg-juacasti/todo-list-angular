@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TodoService} from '../../services/todo.service';
 import {Todo} from '../../interfaces/todo';
 import {StateService} from '../../services/state.service';
@@ -21,13 +21,17 @@ export class TodoWrapperComponent implements OnInit {
         private readonly todoService: TodoService,
         private readonly state: StateService,
         private formBuilder: FormBuilder,
-        private router: Router) {
+        private router: Router,
+    ) {
         this.builForm();
     }
 
     ngOnInit(): void {
+
         this.getListTodo();
         this.state.todoList$.subscribe(resp => this.listPayments = resp);
+
+
     }
 
     getListTodo() {
@@ -75,6 +79,11 @@ export class TodoWrapperComponent implements OnInit {
         this.todoService.deleteTodo(id).subscribe(value => {
             this.getListTodo();
         });
+    }
+
+    onEditClick(id: number) {
+        this.router.navigate([`/todo/${id}`]);
+
     }
 
 

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
 import {TodoService} from '../services/todo.service';
 import {Todo} from '../interfaces/todo';
+import {Observable} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -13,13 +14,8 @@ export class TodoResolver implements Resolve<Todo> {
     ) {
     }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Todo> {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
         const {id} = route.params;
-        console.log(id);
-
-        this.todoService.getTodoById(id).subscribe(value => {
-            console.log(value);
-        });
-        return null;
+        return this.todoService.getTodoById(id);
     }
 }
