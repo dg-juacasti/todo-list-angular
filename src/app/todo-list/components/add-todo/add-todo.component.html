@@ -1,38 +1,55 @@
 <app-header></app-header>
 
 <form [formGroup]="frmTodo">
-  <div class="container__form">
-    <div class="container__label-space">
-      <label>Descripción</label>
-    </div>
-    <div>
-      <app-input [frmTodo]="frmTodo"></app-input>
-    </div>
+    <div class="container__form">
+        <div class="container__label-space">
+            <label>Descripción</label>
+        </div>
+        <div>
+            <app-input [frmTodo]="frmTodo"></app-input>
+        </div>
+        <div class="errors-container"
+             *ngIf="descriptionTodo.invalid && (descriptionTodo.dirty || descriptionTodo.touched)">
+            <label *ngIf="descriptionTodo.hasError('required')">
+                Descripción es requerida.
+            </label>
+            <label *ngIf="descriptionTodo.hasError('maxlength')">
+                Descripción debe tener máximo 50 caracteres.
+            </label>
+        </div>
 
-    <div class="container__label-space">
-      <label for="start">Fecha límite</label>
-    </div>
-    <div>
-      <input
-        type="date"
-        id="start"
-        name="todo-start"
-        value="2018-07-22"
-        min="2022-01-01"
-        max="2023-12-31"
-        data-date-format="DD MMMM YYYY"
-        formControlName="finishAt"
-      />
-    </div>
+        <div class="container__label-space">
+            <label for="start">Fecha límite</label>
+        </div>
+        <div>
+            <input
+                    type="date"
+                    id="start"
+                    name="todo-start"
+                    value="2018-07-22"
+                    min="2022-01-01"
+                    max="2023-12-31"
+                    data-date-format="DD MMMM YYYY"
+                    formControlName="finishAt"
+            />
+        </div>
+        <div class="errors-container"
+             *ngIf="finishAt.invalid && (finishAt.dirty || finishAt.touched)">
+            <label *ngIf="finishAt.hasError('required')">
+                Descripción es requerida.
+            </label>
+        </div>
 
-    <div class="container__actions">
-      <div>
-        <app-icon-button
-          [textButton]="'Agregar'"
-          (actionClick)="onClickAdd()"
-          [disabled]="!frmTodo.valid"
-        ></app-icon-button>
-      </div>
+        <div class="container__actions">
+            <app-icon-button [textButton]="'Volver'"
+                             (actionClick)="onClickBack()"
+                             typeButton="secundary"
+            ></app-icon-button>
+            <app-icon-button [textButton]="'Agregar'"
+                             (actionClick)="onClickAdd()"
+                             [disabled]="!frmTodo.valid"
+            ></app-icon-button>
+
+        </div>
     </div>
-  </div>
 </form>
