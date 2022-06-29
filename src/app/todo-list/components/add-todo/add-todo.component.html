@@ -1,0 +1,47 @@
+<app-header></app-header>
+
+<ng-container *ngIf="showInterface">
+	<form [formGroup]="frmTodo">
+		<div class="container__form">
+			<div class="container__label-space">
+				<label>Descripción</label>
+			</div>
+			<div>
+				<app-input
+					ngDefaultControl
+					[formControlName]="'descriptionTodo'"
+				></app-input>
+			</div>
+
+			<div class="container__label-space">
+				<label for="start">Fecha límite</label>
+			</div>
+			<div>
+				<app-input
+					ngDefaultControl
+					[formControlName]="'finishAt'"
+					[type]="'date'"
+					[id]="'start'"
+					[value]="handleText('finishAt')"
+				></app-input>
+			</div>
+
+			<div class="container__actions">
+				<div>
+					<app-icon-button
+						[textButton]="'Volver'"
+						(actionClick)="navigateTo('')"
+						typeButton="secondary"
+					></app-icon-button>
+				</div>
+				<div>
+					<app-icon-button
+						[textButton]="'Agregar'"
+						(actionClick)="onClickAdd()"
+						[disabled]="!frmTodo.valid"
+					></app-icon-button>
+				</div>
+			</div>
+		</div>
+	</form>
+</ng-container>

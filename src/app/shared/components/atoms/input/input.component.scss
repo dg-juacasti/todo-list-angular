@@ -1,0 +1,22 @@
+
+@import '../../../../../assets/scss/util/color-palette.scss';
+
+.error {
+    color: $danger;
+    input {
+         border-color: $danger;
+      color: $danger;
+
+      &::placeholder {
+        color: $danger;
+      }
+
+      &:hover {
+        border-color: $danger;
+      }
+
+      &:focus {
+        border-color: $danger;
+      }
+    }
+}
