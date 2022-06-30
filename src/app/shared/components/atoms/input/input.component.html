@@ -1,0 +1,11 @@
+<div [formGroup]="frmTodo">
+  <input
+    type="text"
+    formControlName="descriptionTodo"
+    placeholder="{{ placeholder }}"
+    (keyup)="onKeyUp($event)"
+  />
+  <label id="error-description" class="helper-error" *ngIf="frmTodo.controls.descriptionTodo.errors?.required">
+    Descripción es requerida
+  </label>
+</div>
