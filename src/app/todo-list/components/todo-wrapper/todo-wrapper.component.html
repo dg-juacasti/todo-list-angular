@@ -1,0 +1,42 @@
+<app-header></app-header>
+
+<div class="container__search">
+  <div>
+    <app-input [frmTodo]="frmTodo" (onKeyUpEvent)="filterTodo($event)" ></app-input>
+    <app-icon-button
+      [classNameIcon]="'fa fa-plus'"
+      (actionClick)="addTodo()"
+    ></app-icon-button>
+  </div>
+</div>
+<div id="idEmpty">
+<div *ngIf="show">No tiene tareas registradas</div>
+</div>
+<div class="container__list-todo" *ngFor="let todo of listPayments">
+  <div>
+    <input
+      type="checkbox"
+      (change)="onChangeStatus(todo)"
+      [checked]="todo.status === 1"
+    />
+  </div>
+  <div [ngClass]="{ 'todo-finished': todo.status === 1 }">
+    {{ todo.description }}
+  </div>
+  <div class="txt-date" [ngClass]="{ 'todo-finished': todo.status === 1 }">
+    {{ todo.finish_at | date: "dd/MM/yyyy" }}
+  </div>
+  <div>
+    <em class="fa fa-pencil icon--color" (click)="editar(todo)"></em>
+  </div>
+  <div>
+    <em class="fa fa-trash-o icon--color" (click)="eliminar(todo)"></em>
+  </div>
+</div>
+<div><app-icon-button 
+   [textButton]="completed+' de '+fullList?.length+ ' tareas completadas'" ></app-icon-button>
+ </div>
+<br>
+<div><app-icon-button (actionClick)="filterTodoStatus()"
+  [typeButton]="'primary'" [textButton]="filterStatus?'Mostrar Todos':'Mostrar completed'" [classNameIcon]="'fa fa-tasks '"></app-icon-button>
+ </div>
