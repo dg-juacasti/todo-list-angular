@@ -24,10 +24,9 @@ export class AddTodoComponent implements OnInit {
   }
 
   onClickAdd() {
-    let todo = this.frmTodo.getRawValue();
-    this.NewTodo(todo);
+    this.todo = this.frmTodo.getRawValue();
+    this.NewTodo(this.todo);
   }
-
 
   NewTodo(todo: Todo) {
     todo.status = 0;
@@ -38,7 +37,7 @@ export class AddTodoComponent implements OnInit {
         }
       },
       (error) => {
-        console.log('No se pudo crear el usuario');
+        console.log('No se pudo crear el todo');
       }
     );
   }

@@ -58,7 +58,7 @@ describe('TodoService', () => {
   });
 
   it('getAll Todos', () => {
-    service.getAll().subscribe((res) => {
+    service.getTodoList().subscribe((res) => {
       expect(res).toEqual(mockArray);
     });
 
