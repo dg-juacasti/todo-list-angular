@@ -1,0 +1,106 @@
+@import "../../../../assets/scss/util/color-palette.scss";
+
+.container {
+  &__header {
+    text-align: center;
+  }
+  &__list-todo {
+    display: grid;
+    grid-template-columns: 8% auto 8% 8%;
+    align-items: center;
+    grid-gap: 8px;
+    padding: 14px 12px;
+    color: #1e6395;
+  }
+  &__description-date{
+    display: grid;
+    grid-template-columns: 100%;
+    @media screen and (min-width: 768px) {
+      grid-template-columns: 70% 30%;  
+    }
+  }
+
+  &__list-todo:nth-child(even) {
+    background: #edf8fe;
+  }
+
+  &__list-todo:nth-child(odd) {
+    background: #f5f9f9;
+  }
+
+  &__search {
+    display: grid;
+    grid-template-columns: 89% 11%;
+    grid-gap: 8px;
+    padding: 8px 0 16px;
+  }
+
+  &__progress-bar{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 70%;
+    padding: 10px;
+  }
+
+  &__button-show-todo{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 60%;
+  }
+
+}
+
+button {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  background-color: #4c9cc3;
+  border-color: #4c9cc3;
+  color: #f5f9f9;
+}
+
+progress {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.container__progress-bar span{
+    position: absolute;
+    display: inline-block;
+    color: black;
+    text-align: center;
+    width: 75%;
+    @media screen and (min-width: 768px) {
+      width: 50%;
+    }
+    @media screen and (min-width: 1200px) {
+      width: 25%;
+    }
+}
+
+progress::-moz-progress-bar {
+  background: gray;
+  border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+  background: #FFDB58;
+  border-radius: 10px;
+}
+
+progress::-webkit-progress-bar {
+  background: #edf8fe;
+  border-radius: 10px;
+}
+
+.todo-finished {
+  text-decoration: line-through;
+}
+
+.txt-date {
+  color: $textColor2;
+}
