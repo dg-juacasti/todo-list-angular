@@ -1,31 +1,36 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ResponseTodo } from '../interfaces/response';
-import { tap } from 'rxjs/operators';
-import { StateService } from './state.service';
+import { map } from 'rxjs/operators';
+import { Todo } from '../interfaces/todo';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
-  private readonly ID_AUTOR = 1;
-  private readonly ENPOINT = 'https://bp-todolist.herokuapp.com';
+  private readonly ID_AUTOR = 3;
+  readonly ENPOINT = 'https://bp-todolist.herokuapp.com';
 
-  constructor(
-    private http: HttpClient,
-    private readonly state: StateService
-  ) { }
+  constructor(public httpClient: HttpClient) { }
 
-  getTodoList(): Observable<ResponseTodo> | undefined {
-    return this.http.get<ResponseTodo>(`${this.ENPOINT}/?id_author=${this.ID_AUTOR}`).pipe(
-      tap(
-        resp => {
-          this.state.setTodoList(resp.data);
-        }
-      )
+  getAll(): Observable<any> {
+    return this.httpClient.get<any>(`${this.ENPOINT}/?id_author=${this.ID_AUTOR}`).pipe(
+      map(resp => { return resp; })
     );
   }
 
+  newTodo(todo: Todo): Observable<any> {
+    todo.id_author = this.ID_AUTOR;
+    return this.httpClient.post<any>(`${this.ENPOINT}/?id_author=${this.ID_AUTOR}`, todo)
+  }
+
+  updateTodo(todo: Todo): Observable<any> {
+    todo.id_author = this.ID_AUTOR;
+    return this.httpClient.put<any>(this.ENPOINT + '/' + todo.id, todo);
+  }
+
+  deleteTodo(id: number): Observable<any> {
+    return this.httpClient.delete<boolean>(this.ENPOINT + '/' + id);
+  }
 }
