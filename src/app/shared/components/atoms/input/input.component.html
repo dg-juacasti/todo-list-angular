@@ -1,0 +1,11 @@
+<div [formGroup]="frmTodo">
+  <input
+    type="text"
+    formControlName="description"
+    placeholder="{{ placeholder }}"
+    (keyup)="onKeyUp($event)"
+    
+    (ngModelChange)="searchCharacter($event)"
+    
+  />
+</div>
