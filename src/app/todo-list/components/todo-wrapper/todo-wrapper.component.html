@@ -12,8 +12,6 @@
   <div class="container__list-todo" *ngFor="let todo of listPayments">
     <div>
       <input type="checkbox" (change)="onChangeStatus(todo, $event)" [checked]="todo.status === 1" />
-      <!-- <input type="checkbox" [formControlName]="i" id="isFormula-{{i}}-addInstitutionComponent"
-        (change)="checkIsFormula(i,$event);validateCheck(i)" value="getArrayForm('isFormula').at({{i}}).value"> -->
 
     </div>
     <div [ngClass]="{ 'todo-finished': todo.status === 1 }">
@@ -29,9 +27,6 @@
       <em class="fa fa-trash-o icon--color" (click)="deleteTodo(todo.id)"></em>
     </div>
   </div>
-
-
-
 </div>
 
 <div class=" footer">

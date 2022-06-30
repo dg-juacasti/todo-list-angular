@@ -6,7 +6,6 @@ export interface ResponseTodo {
     data: Todo[]
 }
 
-
 export interface Response {
     success: boolean;
     type: string;

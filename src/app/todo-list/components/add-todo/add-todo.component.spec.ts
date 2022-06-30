@@ -4,7 +4,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AddTodoComponent } from './add-todo.component';
 import { TodoService } from '../../services/todo.service';
 import { Todo } from '../../interfaces/todo';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 describe('AddTodoComponent', () => {
     let component: AddTodoComponent;
@@ -16,6 +16,8 @@ describe('AddTodoComponent', () => {
         id_author: 3,
         status: 0
     }
+
+    const formBuilder: FormBuilder = new FormBuilder();
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
@@ -44,5 +46,19 @@ describe('AddTodoComponent', () => {
 
         component.NewTodo(mockTodo1);
         expect(spyGetTodos).toHaveBeenCalled();
+    })
+
+    it('onClickAdd', () => {
+        let description='description1';
+        let date='22-01-2022'
+        component.frmTodo = formBuilder.group({
+            description: new FormControl(description),
+            finish_at: new FormControl(date)
+        });
+
+        component.onClickAdd();
+
+        expect(component.todo.description).toEqual(description);
+        expect(component.todo.finish_at).toEqual(date);
     })
 });

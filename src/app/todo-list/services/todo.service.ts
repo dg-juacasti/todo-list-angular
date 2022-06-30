@@ -10,11 +10,12 @@ import { Todo } from '../interfaces/todo';
 export class TodoService {
 
   private readonly ID_AUTOR = 3;
+
   readonly ENPOINT = 'https://bp-todolist.herokuapp.com';
 
   constructor(public httpClient: HttpClient) { }
 
-  getAll(): Observable<any> {
+  getTodoList(): Observable<any> {
     return this.httpClient.get<any>(`${this.ENPOINT}/?id_author=${this.ID_AUTOR}`).pipe(
       map(resp => { return resp; })
     );

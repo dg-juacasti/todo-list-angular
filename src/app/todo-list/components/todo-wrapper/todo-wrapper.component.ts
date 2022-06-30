@@ -21,25 +21,14 @@ export class TodoWrapperComponent implements OnInit {
 
   constructor(
     private readonly todoService: TodoService,
-    private readonly state: StateService,
     private router: Router) { }
 
   ngOnInit(): void {
-    console.log('entro');
     this.getAll();
   }
 
-  // getList() {
-  //   this.getListTodo();
-  //   this.state.todoList$.subscribe(resp => this.listPayments = resp);
-  // }
-
-  // getListTodo() {
-  //   this.todoService.getTodoList().subscribe();
-  // }
-
   getAll() {
-    this.todoService.getAll().subscribe(
+    this.todoService.getTodoList().subscribe(
       (response) => {
         if (response)
 
@@ -52,7 +41,6 @@ export class TodoWrapperComponent implements OnInit {
     );
   }
 
-
   addTodo() {
     this.router.navigate(['/todo']);
   }
@@ -61,12 +49,12 @@ export class TodoWrapperComponent implements OnInit {
     this.todoService.deleteTodo(id).subscribe(
       (response) => {
         if (response) {
-          alert("Usuario eliminado satisfactoriamente");
+          alert("Tod eliminado satisfactoriamente");
           this.getAll();
         }
       },
       (error) => {
-        alert('No se pudo eliminar el usuario');
+        alert('No se pudo eliminar el todo');
       }
     )
   }
@@ -108,21 +96,21 @@ export class TodoWrapperComponent implements OnInit {
   }
 
   onChangeStatus(todo: Todo, event: any) {
-    console.log(todo);
     todo.status = event.target.checked;
     this.editTodo(todo);
   }
+
 
   editTodo(todo: Todo) {
     console.log(todo);
     this.todoService.updateTodo(todo).subscribe(
       (response) => {
         if (response) {
-          //  alert('Usuario creado satisfactoriamente');
+          //  alert('todo creado satisfactoriamente');
         }
       },
       (error) => {
-        // alert('No se pudo crear el usuario');
+        // alert('No se pudo crear el todo');
       }
     );
   }
