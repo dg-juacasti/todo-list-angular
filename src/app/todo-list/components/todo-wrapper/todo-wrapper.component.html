@@ -1,0 +1,65 @@
+<app-header></app-header>
+
+<div class="container__search">
+  <div>
+    <input
+            placeholder="Buscar tarea"
+            type="text"
+            #search
+            id="search"
+            name="todo-search"
+            (input)="searchTodo(search.value)"/>
+    <app-icon-button
+            style="margin-left: 12px;"
+      [classNameIcon]="'fa fa-plus'"
+      (actionClick)="addTodo()"
+    ></app-icon-button>
+  </div>
+</div>
+
+<div class="container__list-todo" *ngFor="let todo of listPayments">
+  <div>
+    <input
+      type="checkbox"
+      (change)="onChangeStatus(todo)"
+      [checked]="todo.status === 1"
+    />
+  </div>
+  <div [ngClass]="{ 'todo-finished': todo.status === 1 }">
+    {{ todo.description }}
+  </div>
+  <div class="txt-date" [ngClass]="{ 'todo-finished': todo.status === 1 }">
+    {{ todo.finish_at | date: "dd/MM/yyyy" }}
+  </div>
+  <div>
+    <em class="fa fa-pencil icon--color"></em>
+  </div>
+  <div>
+    <em class="fa fa-trash-o icon--color" (click)="deleteTodo(todo.id)"></em>
+  </div>
+</div>
+
+<div *ngIf="listPayments?.length > 0" class="container__progress-todo">
+  <table>
+    <tr>
+      <td>
+        <div class="container__progress-todo__progress">
+          {{completedPayments}} de {{listPayments?.length}} tarea(s) completada(s)
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 20%">
+        <button class="container__progress-todo__button" (click)="filterTodo(0)" *ngIf="showAll">Mostrar no completados
+          <em class="fa fa-th-list"></em>
+        </button>
+        <button class="container__progress-todo__button" (click)="filterTodo(1)" *ngIf="!showAll">Mostrar todos</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="listPayments?.length === 0" class="container__list-empty" style="text-align: center;">
+  <em style="color:#1e6395;" class="fa fa-info-circle"></em>
+  <h2 style="color:#1e6395;"> No tienes tareas registradas</h2>
+</div>
