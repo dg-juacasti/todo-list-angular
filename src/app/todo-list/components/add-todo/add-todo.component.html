@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<form [formGroup]="frmTodo">
+  <div class="container__form">
+    <div class="container__label-space">
+      <label>Descripción</label>
+    </div>
+    <div>
+      <input type="text" id="todoDescription" formControlName="description" />
+      <span class="container__error" *ngIf="descriptionErrorMessage">{{
+        descriptionErrorMessage
+      }}</span>
+    </div>
+
+    <div class="container__label-space">
+      <label for="start">Fecha límite</label>
+    </div>
+    <div>
+      <input
+        type="date"
+        id="todoFinishAt"
+        name="todo-start"
+        min="2022-01-01"
+        max="2023-12-31"
+        formControlName="finishAt"
+      />
+      <span class="container__error" *ngIf="dateErrorMessage">{{
+        dateErrorMessage
+      }}</span>
+    </div>
+
+    <div class="container__actions">
+      <div>
+        <app-icon-button
+          [textButton]="'Volver'"
+          (actionClick)="navigateBack()"
+          [typeButton]="'secundary'"
+        ></app-icon-button>
+      </div>
+      <div>
+        <app-icon-button
+          [textButton]="buttonText"
+          (actionClick)="onClickAdd()"
+          [disabled]="isFormInvalid"
+        ></app-icon-button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,33 @@
+@import "../../../../../assets/scss/util/color-palette.scss";
+
+button {
+  box-sizing: border-box;
+  padding: 14px 0;
+  border-radius: 4px;
+  border-style: solid;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.button {
+  &--primary {
+    background-color: $secondaryColor;
+    border-color: $secondaryColor;
+    color: $oddColor;
+  }
+  &--secundary {
+    color: $black;
+    font-weight: bold;
+    background: $oddColor;
+    border-color: $oddColor;
+  }
+  &:hover {
+    opacity: 0.9;
+  }
+}

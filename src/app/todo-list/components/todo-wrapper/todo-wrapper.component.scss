@@ -1,0 +1,97 @@
+@import "../../../../assets/scss/util/color-palette.scss";
+
+.container {
+  &__header {
+    text-align: center;
+  }
+  &__list-todo {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 8% auto 8% 8%;
+    grid-gap: 8px;
+    padding: 14px 12px;
+    color: #1e6395;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 8% auto 15% 15;
+    }
+  }
+  &__list-todo:nth-child(even) {
+    background: #edf8fe;
+  }
+  &__list-todo:nth-child(odd) {
+    background: #f5f9f9;
+  }
+
+  &__info-container {
+    display: flex;
+
+    .description {
+      margin-right: 1rem;
+    }
+
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+  }
+
+  &__search {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    padding: 8px 0 16px;
+    width: 100%;
+
+    .input {
+      width: 90%;
+    }
+
+    .button {
+      margin-left: 0.5rem;
+      width: 10%;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .button {
+        margin-left: 0.25rem;
+      }
+    }
+  }
+
+  &__utils {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 1fr;
+      row-gap: 1rem;
+      column-gap: 0;
+    }
+  }
+
+  &__noTasks {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+
+    margin-bottom: 1rem;
+
+    i {
+      color: $textColor;
+    }
+
+    p {
+      color: $secondaryColor;
+    }
+  }
+}
+
+.todo-finished {
+  text-decoration: line-through;
+}
+
+.txt-date {
+  color: $textColor2;
+}

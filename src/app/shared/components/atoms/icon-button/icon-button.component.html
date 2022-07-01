@@ -1,0 +1,10 @@
+<button
+  [ngClass]="{
+    'button--primary': typeButton === 'primary',
+    'button--secundary': typeButton === 'secundary'
+  }"
+  (click)="onClickButton()"
+  [disabled]="disabled"
+>
+  {{ textButton }} <em [ngClass]="classNameIcon" *ngIf="classNameIcon"></em>
+</button>
