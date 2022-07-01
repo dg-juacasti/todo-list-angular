@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoList App Test debe hacer match con el snapshot 1`] = `
+<div
+  id="root3"
+>
+  <app-header />
+  <div
+    class="header"
+  >
+    <div
+      class="header__first-column"
+    >
+      <input
+        class="input input--primary"
+        id="search-input"
+        placeholder="Buscar tarea"
+        type="text"
+      />
+    </div>
+    <div>
+      <app-icon-button />
+    </div>
+  </div>
+  <div
+    class="item-container"
+  >
+    <div
+      class="item-task"
+    >
+      
+    </div>
+  </div>
+  <div
+    class="footer"
+  >
+    <div
+      class="footer__first-column"
+    >
+      <label
+        class="footer_label"
+      >
+         Tareas completadas 
+      </label>
+    </div>
+    <div
+      class="footer__second-column"
+    >
+      <button
+        class="button button--primary"
+      >
+         Mostrar no completados 
+      </button>
+    </div>
+  </div>
+</div>
+`;
