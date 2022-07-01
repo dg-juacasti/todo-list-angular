@@ -1,0 +1,53 @@
+<app-header></app-header>
+<div class="container__search">
+  <div>
+    <app-input 
+      [frmTodo]="frmTodo"    
+      placeholder="Buscar tarea" 
+      (onKeyUpEvent)="onFindFilter($event)">
+  </app-input>
+  </div>
+
+  <div>
+    <app-icon-button
+      [classNameIcon]="'fa fa-plus'"
+      (actionClick)="addTodo()"
+    ></app-icon-button>
+  </div>
+</div>
+<div *ngIf="hayResgistros" 
+     class="alert">
+     <svg class="alert-icon" stroke="currentColor" fill="currentColor" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 472.615 472.615" style="enable-background:new 0 0 472.615 472.615;" xml:space="preserve">
+<g>
+	<g>
+		<path d="M236.308,0C105.799,0,0,105.798,0,236.308s105.799,236.308,236.308,236.308c130.51,0,236.308-105.798,236.308-236.308
+			S366.818,0,236.308,0z M246.153,397.613h-19.692V145.566h19.692V397.613z M246.153,110.017h-19.692v-35.01h19.692V110.017z"/>
+	</g>
+</g>
+</svg>
+    <p class="alert-message">No tienes tareas registras</p>
+</div>
+
+<div class="container__list-todo" *ngFor="let todo of listPayments">
+  <div>
+    <input
+      type="checkbox"
+      (change)="onChangeStatus(todo)"
+      [checked]="todo.status === 1"
+    />
+  </div>
+  <div [ngClass]="{ 'todo-finished': todo.status === 1 }">
+    {{ todo.description }}
+  </div>
+  <div class="txt-date" [ngClass]="{ 'todo-finished': todo.status === 1 }">
+    {{ todo.finish_at | date: "dd/MM/yyyy" }}
+  </div>
+  <div>
+    <em class="fa fa-pencil icon--color"></em>
+  </div>
+  <div>
+    <em class="fa fa-trash-o icon--color"></em>
+  </div>
+</div>
+
