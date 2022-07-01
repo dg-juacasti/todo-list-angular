@@ -1,0 +1,40 @@
+<app-header></app-header>
+
+<div class="container__search">
+  <input type="text" [formControl]='search' placeholder="Buscar tarea">
+  <div>
+    <app-icon-button [classNameIcon]="'fa fa-plus'" (actionClick)="addTodo()"></app-icon-button>
+  </div>
+</div>
+
+<div class="container__list-todo" *ngFor="let todo of listPayments">
+  <div>
+    <input type="checkbox" (change)="onChangeStatus(todo)" [checked]="todo.status === 1" />
+  </div>
+  <div [ngClass]="{ 'todo-finished': todo.status === 1 }">
+    {{ todo.description }}
+  </div>
+  <div class="txt-date" [ngClass]="{ 'todo-finished': todo.status === 1 }">
+    {{ todo.finish_at | date: "dd/MM/yyyy" }}
+  </div>
+  <div>
+    <em class="fa fa-pencil icon--color" (click)="editTodo(todo)"></em>
+  </div>
+  <div>
+    <em class="fa fa-trash-o icon--color" (click)="deleteTodo(todo)"></em>
+  </div>
+</div>
+<div class="container__message" *ngIf="listPayments.length === 0">
+  <br />
+  <i class="fa fa-info-circle" aria-hidden="true"></i>
+  <br />
+  No tiene tareas registradas
+</div>
+<div class="container__legend">
+  {{processed}} de {{allPayments.length}} tareas completadas
+</div>
+<br />
+<div class="container__header">
+  <button class="myActionBtn" (click)="showPending()">Mostrar no completados</button>
+  <button class="myActionBtn" (click)="showAll()">Mostrar todos</button>
+</div>
