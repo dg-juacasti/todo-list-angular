@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+<div class="container__search">
+  <div>
+    <app-input [frmTodo]="input"></app-input>
+  </div>
+  <div>
+
+    <app-icon-button [classNameIcon]="'fa fa-plus'" (actionClick)="addTodo()"></app-icon-button>
+  </div>
+</div>
+
+<div class="container__list-todo" *ngFor="let todo of listPayments">
+  <div>
+    <input [formControl]="check" type="checkbox" (change)="onChangeStatus(todo)" [checked]="todo.status === 1" />
+  </div>
+  <div [ngClass]="{ 'todo-finished': todo.status === 1}">
+    {{ todo.description }}
+  </div>
+  <div class="txt-date" [ngClass]="{ 'todo-finished': todo.status === 1 }">
+    {{ todo.finish_at | date: "dd/MM/yyyy" }}
+  </div>
+  <div>
+    <em (click)="update(todo)" class="fa fa-pencil icon--color"></em>
+  </div>
+  <div>
+    <em (click)="delete(todo.id)" class="fa fa-trash-o icon--color"></em>
+  </div>
+</div>
