@@ -1,0 +1,11 @@
+<button
+  [ngClass]="{
+    'button--primary': typeButton === 'primary',
+    'button--secundary': typeButton === 'secundary'
+  }"
+  (click)="onClickButton()"
+  [disabled]="disabled"
+  [class]="fullWidth"
+>
+  <em [ngClass]="classNameIcon"></em> {{ textButton }}
+</button>
