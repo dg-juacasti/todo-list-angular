@@ -1,0 +1,18 @@
+<form [formGroup]="todoForm" (ngSubmit)="create()">
+    <div>
+        <label for="description">Description</label>
+        <input name="description" id="description" type="text" formControlName="description">
+    </div>
+    <div>
+        <label for="date"> Fecha Limite</label>
+        <input name="date" id="date" type="date" formControlName="finish_at">
+    </div>
+    <div>
+        <button class="submit" type="submit">Agregar</button>
+    </div>
+    <div *ngIf="success">
+        <span style="background-color: rgb(219, 21, 25); color: white; align-content: center; margin-left:50%; font-size:30px;">
+            TODO agregado
+        </span>
+    </div>
+</form>
