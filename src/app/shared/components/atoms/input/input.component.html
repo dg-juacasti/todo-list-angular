@@ -1,0 +1,11 @@
+<div [formGroup]="frmTodo">
+  <input
+    type="text"
+    formControlName="descriptionTodo"
+    placeholder="{{ placeholder }}"
+    (keyup)="onKeyUp($event)"
+  />
+  <div class="general-error" *ngIf="frmTodo.controls['descriptionTodo'].invalid">
+    <span class="msn-error">La Descripción es obligatorio</span>
+    </div>
+</div>

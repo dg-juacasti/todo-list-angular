@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<form [formGroup]="frmTodo">
+  <div class="container__form">
+    <div class="container__label-space">
+      <label>Descripción</label>
+    </div>
+    <div>
+      <app-input [frmTodo]="frmTodo" (onKeyUpEvent)="descripcionTodo($event)"></app-input>
+    </div>
+
+    <div class="container__label-space">
+      <label for="start">Fecha límite</label>
+    </div>
+    <div>
+      <input
+        type="date"
+        id="start"
+        name="todo-start"
+        value="2018-07-22"
+        min="2022-01-01"
+        max="2023-12-31"
+        data-date-format="DD MMMM YYYY"
+        formControlName="finishAt"
+      />
+      <div class="general-error" *ngIf="frmTodo.controls['finishAt'].invalid">
+        <span class="msn-error">La fecha Limite es obligatorio</span>
+        </div>
+    </div>
+
+    <div class="container__actions">
+      <div>
+        <app-icon-button
+        [textButton]="'Regresar'"
+        (actionClick)="onClickRegresar()"
+       
+      >
+    </app-icon-button>
+
+        <app-icon-button
+          [textButton]="'Agregar'"
+          (actionClick)="onClickAdd()"
+          [disabled]="!frmTodo.valid"
+        >
+      </app-icon-button>
+      </div>
+    </div>
+  </div>
+</form>
