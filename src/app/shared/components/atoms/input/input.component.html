@@ -1,0 +1,9 @@
+<div [formGroup]="frmTodo">
+  <input
+    type="text"
+    formControlName="descriptionTodo"
+    placeholder="{{ placeholder }}"
+    (keyup)="onKeyUp($event)"
+    required
+  />
+</div>
