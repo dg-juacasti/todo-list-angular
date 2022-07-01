@@ -1,0 +1,12 @@
+@import "../../../../../assets/scss/util/color-palette.scss";
+
+.container {
+  &__header {
+    text-align: center;
+    font-size: 40px;
+    color: $textColor;
+    margin: 16px 0 16px 0;
+    line-height: 48px;
+    font-weight: 400;
+  }
+}
